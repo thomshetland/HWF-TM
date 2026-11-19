@@ -118,7 +118,6 @@ version_check.py   library 0.3.5 with its new options off trains bit-identically
 transform_check.py an OR-level transform equals the leaf read-out (GPU, library 0.3.1)
 run.sh             everything above, in order
 results/           diagnosis.json, planted.csv, transform_check.json, version_check_*.npz
-logs/              the logs of the runs
 ```
 
 Library 0.3.5 is installed in its own environment, `.venv-htm035`, so the project's `.venv`

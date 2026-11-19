@@ -45,7 +45,6 @@ classify.py         stage 2: the TM on the set of words, the families added, or 
 classify_added.py   stage 2: all labels, families added, one row per epoch
 run.sh              all runs
 results/            families_ppmi.json, families_finance.json, classify_*.csv, added_*.csv
-logs/               the logs of the runs
 ```
 
 In `classify_*.csv`, `bow` is the set of words, `bow+families` the families added, `fam+rest` the

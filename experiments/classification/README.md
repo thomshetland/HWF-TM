@@ -28,6 +28,4 @@ Best test accuracy over the epochs. The two machines perform alike.
 tm/, hierarchy_tm/   one script per dataset and machine
 run.sh               all runs
 results/             per-epoch accuracy, one CSV per dataset and machine
-figures/             accuracy_per_epoch, best_test_accuracy
-logs/                the logs of the runs
 ```

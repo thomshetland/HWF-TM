@@ -62,16 +62,12 @@ The flat runs reproduce the benchmark, which has 86.93, 82.46 and 70.38 as best 
 The curves are noisy, most of all on Finance, where the two-leaf HTM drops to 59.03 at epoch 9
 and is back at 70.38 at epoch 10. With one seed, a difference below one point is not a result.
 
-![Train and test accuracy per epoch](figures/accuracy_per_epoch.png)
-
 ## Layout
 
 ```text
 classify.py       one run: --dataset imdb|amazon|finance, --structure flat|two-leaf
-run.sh            all six runs and the figure
+run.sh            all six runs
 results/          per-epoch accuracy and literals per clause, one CSV per run
-figures/          accuracy_per_epoch
-logs/             the logs of the runs
 models/           the machine after its last finished epoch, one checkpoint per run
 ```
 

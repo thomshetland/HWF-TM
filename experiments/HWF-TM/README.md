@@ -49,8 +49,6 @@ export_families.py   stage 2: the family lists of all sources in one format
 classify.py          stage 3: the TM on every input, with accuracy and clause statistics per epoch
 run.sh               all runs
 results/             pretrain_*.json, families_*.json, classify_*.csv, clauses_*/
-figures/             results_clauses, control_difference, results_literals, learning_curves_N200
-logs/                the logs of the runs
 models/              the two pretrained HTMs, reloaded by pretrain.py instead of retrained
 ```
 
