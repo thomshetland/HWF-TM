@@ -47,8 +47,7 @@ pretrain.py          stage 1: both pretext tasks
 families.py          stage 2: OR groups to families, and families to input bits
 export_families.py   stage 2: the family lists of all sources in one format
 classify.py          stage 3: the TM on every input, with accuracy and clause statistics per epoch
-plot_*.py            the figures of the section and Appendix B
-run.sh               all runs and figures
+run.sh               all runs
 results/             pretrain_*.json, families_*.json, classify_*.csv, clauses_*/
 figures/             results_clauses, control_difference, results_literals, learning_curves_N200
 logs/                the logs of the runs

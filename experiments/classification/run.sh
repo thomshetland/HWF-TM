@@ -10,4 +10,3 @@ for dataset in imdb amazon finance; do
     $PY $HERE/tm/$dataset.py
     $PY $HERE/hierarchy_tm/$dataset.py
 done
-$PY $HERE/plot_results.py

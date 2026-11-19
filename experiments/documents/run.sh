@@ -18,4 +18,3 @@ for structure in flat two-leaf; do
         $PY $HERE/hierarchy_tm/imdb_awz.py --structure $structure --seed $seed
     done
 done
-$PY $HERE/plot_results.py

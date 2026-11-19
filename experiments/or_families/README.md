@@ -127,7 +127,7 @@ stays on 0.3.1:
 ```bash
 uv venv --python 3.12 .venv-htm035
 VIRTUAL_ENV=.venv-htm035 uv pip install numpy==2.5.3 scipy==1.18.1 scikit-learn==1.9.0 \
-    matplotlib==3.11.1 pycuda==2026.1 PyHierarchicalTsetlinMachineCUDA==0.3.5 --no-binary pycuda
+    pycuda==2026.1 PyHierarchicalTsetlinMachineCUDA==0.3.5 --no-binary pycuda
 ```
 
 Every run has one seed.

@@ -23,9 +23,3 @@ $PY $HERE/classify.py --families same-dataset profile ppmi --name sources_N1000 
     --epochs 20 --seeds 3 --clauses 250 500 1000 2000 --workers 5
 $PY $HERE/classify.py --families same-dataset profile ppmi --name sources_N200 --labels 200 \
     --epochs 100 --seeds 1 --clauses 2000 --workers 5
-
-# Figures.
-$PY $HERE/plot_results.py
-$PY $HERE/plot_control.py
-$PY $HERE/plot_literals.py
-$PY $HERE/plot_curves.py

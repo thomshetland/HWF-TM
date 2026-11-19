@@ -15,4 +15,3 @@ for dataset in imdb amazon finance; do
             2>&1 | tee -a $HERE/logs/${dataset}_${structure}_seed1.log
     done
 done
-$PY $HERE/plot_results.py

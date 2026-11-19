@@ -32,9 +32,8 @@ uv venv --python 3.12 .venv
 VIRTUAL_ENV=.venv uv pip install -r pyproject.toml --extra dev --no-binary pycuda
 ```
 
-Then redraw every figure from the stored results, or rerun a whole experiment:
+Then rerun a whole experiment:
 
 ```bash
-bash experiments/plot_all.sh
 bash experiments/classification/run.sh
 ```

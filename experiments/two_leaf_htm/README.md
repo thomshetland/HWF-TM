@@ -68,7 +68,6 @@ and is back at 70.38 at epoch 10. With one seed, a difference below one point is
 
 ```text
 classify.py       one run: --dataset imdb|amazon|finance, --structure flat|two-leaf
-plot_results.py   the figure and the summary table
 run.sh            all six runs and the figure
 results/          per-epoch accuracy and literals per clause, one CSV per run
 figures/          accuracy_per_epoch

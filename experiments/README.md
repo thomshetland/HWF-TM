@@ -20,7 +20,7 @@ other, in this order:
   run.sh         the exact commands behind the stored results
   *.py           the code; tm/ and hierarchy_tm/ when one script exists per machine
   results/       the CSV and JSON files behind the report's numbers
-  figures/       the generated figures, if the experiment has any
+  figures/       the stored figures, if the experiment has any
   logs/          the logs of the runs
   models/        trained machines, if the experiment keeps any
 ```
@@ -31,8 +31,7 @@ Code that several experiments use is in [../src/](../src/), and the datasets are
 ## Reproducing the results
 
 Run an experiment with its `run.sh`. A full run takes hours and overwrites the stored results.
-`plot_all.sh` in this folder only redraws the figures from the
-stored results.
+The figures in each `figures/` folder are stored as they were drawn for the report.
 
 - **Hardware.** Every standard TM runs on one CPU thread of an Intel Xeon Platinum 8168. Every HTM
   runs on an NVIDIA Tesla V100, one job at a time.

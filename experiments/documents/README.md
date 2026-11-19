@@ -31,7 +31,6 @@ The HTM values for IMDB vs. Amazon are the mean over three seeds.
 
 ```text
 tm/, hierarchy_tm/   one script per dataset pair and machine
-plot_results.py      the figure and the summary table of the section
 run.sh               all runs and the figure
 results/             per-epoch metrics, one CSV per dataset pair, machine, structure and seed
 figures/             tm_vs_htm_test_accuracy
