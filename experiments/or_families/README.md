@@ -2,9 +2,8 @@
 
 The HWF-TM reads the OR groups of a pretrained HTM out as word families. Those families never
 helped sentiment classification, while PPMI families did ([../HWF-TM/](../HWF-TM/),
-[../ppmi-tm/](../ppmi-tm/)). This experiment asks why. We take apart the stored pretraining runs,
-measure on planted families what the two-slot HTM can learn, and train it on a pretext built so
-that an OR group has to be a family.
+[../ppmi-tm/](../ppmi-tm/)). This experiment asks why. We take apart the stored pretraining runs
+and measure on planted families what the two-slot HTM can learn.
 
 ## How an OR group learns
 
@@ -79,43 +78,18 @@ read-out that takes one group as one family cannot find the families there. Ever
 seed. The audit's second seed at 32 families gave 0.49 at s = 100 and 0.63 at s = 400, so the
 level varies between seeds.
 
-The same script sets the other choices:
+The same script measures two more things:
 - **s.** On eight families s = 100 gives 0.88 and s = 30 gives 0.74.
 - **The new options of library 0.3.5.**
   - `binary_inference` lowers four families from 0.96 to 0.80.
   - `literal_budget = 1` gives bit-identical results. That is not because leaves hold one word:
     Type II feedback adds absent words, so dead leaves of two or more words do occur.
 
-## Result 3: a pretext that needs families learns them only at small scale
-
-`pretrain.py` trains on word pairs (a, b) with a different from b. Y = 1 when a and b are
-neighbours, meaning that one is among the other's k nearest in the PPMI embedding of `../ppmi-tm`.
-That label needs no annotation. Otherwise b is a word of the same frequency as a neighbour would
-be. Exact overlap is impossible. A baseline that knows only how often each word occurs in positive
-training pairs scores 0.47 and 0.52, so word frequency carries no signal either.
-
-Validation asks for relations the machine has not seen. Every unordered word pair is assigned to
-training or validation before sampling, so a held-out neighbour pair can only be recognised
-through families. A first version sampled both sets from the same pairs. With only about V * k
-neighbour pairs, every validation positive was then a training pair, and its 0.86 at 96 words
-measured memorisation (found by the external audit).
-
-| Vocabulary | Clauses | Train / validation, mean of the last 10 epochs | Best validation | Within-family pairs that are PPMI neighbours (random pairs) | Sentiment coherence | PPMI on the same words |
-| --- | --- | --- | --- | --- | --- | --- |
-| 96 most frequent words, k = 5 | 256 | 0.772 / 0.543 | 0.571 | 13 % (6.9 %) | +0.12 | +0.67 |
-| 300 most frequent words, k = 10 | 1024 | 0.506 / 0.501 | 0.506 | 6 % (4.8 %) | +0.02 | +0.55 |
-
-With 96 words the machine learns the training pairs but hardly generalises to new ones. Its groups
-hold about twice as many neighbour pairs as random words, but they are unions of several
-neighbourhoods, for example `acting | characters | don't | film | how | many | me | most | seen |
-story | too | very`. They carry little sentiment: +0.12 against +0.67 for PPMI on the same words.
-With 300 words the machine does not even learn the training pairs, at four times the clauses.
-
 ## What this says about the HWF-TM
 
 The OR mechanism is not the problem. Trained on the sentiment label itself, an HTM with an OR level
 learns families such as `great | wonderful | perfect` at 99.5 % polarity purity (X11 in
-`docs/findings-early-probes.md`). Our families fail for four reasons:
+`docs/findings-early-probes.md`). Our families fail for three reasons:
 
 1. **The pretext label.** An OR group is an equivalence class of the pretext label. "Same dataset"
    makes every IMDB word equivalent, and a task that exact overlap can largely solve gives little
@@ -125,9 +99,7 @@ learns families such as `great | wonderful | perfect` at 99.5 % polarity purity 
    loses them. On the profile run the HWF-TM's consensus order combines groups, and its families
    occur together more often than random words (Result 1), but they are no more alike in
    sentiment. A read-out cannot give the families a meaning the pretext did not ask for.
-3. **Generalisation.** A pretext that needs families, word pairs labelled by PPMI neighbourhood,
-   is memorised at 96 words and not learned at 300, and does not carry to unseen pairs.
-4. **Frequency.** A one-word alternative forgets at 1/s per update and is reinforced only when its
+3. **Frequency.** A one-word alternative forgets at 1/s per update and is reinforced only when its
    word occurs. Rare words cannot hold an alternative, so groups fill up with frequent words.
 
 Upstream `main` (0.3.4 onwards) has a `transform(X)` that returns each clause's root vote; its CUDA
@@ -141,16 +113,12 @@ families than the read-out does.
 ```text
 diagnose.py        Result 1: clause structure and coherence of the stored HWF-TM runs (CPU)
 planted.py         Result 2: planted families, options, s, scale (GPU, library 0.3.5)
-pretrain.py        Result 3: the PPMI-neighbour pretext (GPU, library 0.3.1)
-evaluate.py        coherence of the families pretrain.py writes, next to PPMI (CPU)
 word_stats.py      per-word dataset and sentiment log-odds, document PMI, coherence
 version_check.py   library 0.3.5 with its new options off trains bit-identically to 0.3.1
 transform_check.py an OR-level transform equals the leaf read-out (GPU, library 0.3.1)
 run.sh             everything above, in order
-results/           diagnosis.json, planted.csv, transform_check.json, pretrain_*.json,
-                   families_*.json, coherence_*.json, version_check_*.npz
+results/           diagnosis.json, planted.csv, transform_check.json, version_check_*.npz
 logs/              the logs of the runs
-models/            pretraining checkpoints, one per run
 ```
 
 Library 0.3.5 is installed in its own environment, `.venv-htm035`, so the project's `.venv`

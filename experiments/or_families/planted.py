@@ -20,7 +20,7 @@ six words at 80 % purity or more. An empty alternative keeps its group true for 
 such a group is no family. A leaf of two or more words never fires on a one-hot slot; those
 dead leaves are counted too (Type II feedback includes absent words, so they do arise).
 
-These are the measurements behind the choices in pretrain.py. Needs library 0.3.5. Writes
+Needs library 0.3.5. Writes
 results/planted.csv. Run from the repo root:
 
   ./.venv-htm035/bin/python experiments/or_families/planted.py
