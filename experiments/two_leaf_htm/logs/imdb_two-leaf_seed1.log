@@ -1,0 +1,14 @@
+imdb_two-leaf_seed1: X_train (40000, 5000), X_test (10000, 5000)
+structure ((0, 2500), (0, 2))
+#1 train 88.00% test 86.20% literals per clause: 0.6 words, 69.8 negated (43s)
+#2 train 88.54% test 84.90% literals per clause: 0.6 words, 84.0 negated (36s)
+#3 train 90.69% test 86.66% literals per clause: 0.6 words, 86.6 negated (34s)
+#4 train 91.65% test 86.40% literals per clause: 0.5 words, 93.8 negated (33s)
+#5 train 92.17% test 86.41% literals per clause: 0.5 words, 100.1 negated (32s)
+#6 train 92.50% test 86.53% literals per clause: 0.5 words, 105.3 negated (31s)
+#7 train 92.27% test 86.36% literals per clause: 0.5 words, 107.5 negated (31s)
+#8 train 92.96% test 86.28% literals per clause: 0.5 words, 112.3 negated (31s)
+#9 train 94.02% test 86.80% literals per clause: 0.5 words, 115.7 negated (30s)
+#10 train 94.07% test 86.52% literals per clause: 0.5 words, 119.5 negated (30s)
+
+best test accuracy 86.8000% at epoch 9; wrote /home/coder/ict-project/experiments/two_leaf_htm/results/imdb_two-leaf_seed1.csv

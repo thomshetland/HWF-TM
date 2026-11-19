@@ -1,0 +1,95 @@
+vocabulary 661 words, df in [0.01, 0.1] of spans
+pairs: train (120000, 1322), val (2000, 1322), positives 0.50
+overlap baseline (share >= 3 words): 0.8490
+structure ((0, 661), (3, 8), (0, 2)), initial vote per clause 64, T 256
+#1 val 0.5305 (20s)
+#2 val 0.5575 (20s)
+#3 val 0.5300 (20s)
+#4 val 0.5275 (20s)
+#5 val 0.6425 (20s)
+#6 val 0.7020 (20s)
+#7 val 0.6820 (20s)
+#8 val 0.6510 (20s)
+#9 val 0.7285 (20s)
+#10 val 0.6765 (20s)
+#11 val 0.7515 (20s)
+#12 val 0.6965 (20s)
+#13 val 0.7170 (20s)
+#14 val 0.7780 (20s)
+#15 val 0.7140 (20s)
+#16 val 0.7820 (19s)
+#17 val 0.7745 (19s)
+#18 val 0.7420 (19s)
+#19 val 0.8010 (19s)
+#20 val 0.8020 (19s)
+#21 val 0.7695 (19s)
+#22 val 0.7350 (19s)
+#23 val 0.6540 (19s)
+#24 val 0.7595 (19s)
+#25 val 0.7715 (19s)
+#26 val 0.8030 (19s)
+#27 val 0.7980 (19s)
+#28 val 0.7800 (19s)
+#29 val 0.6120 (19s)
+#30 val 0.7140 (19s)
+#31 val 0.8170 (19s)
+#32 val 0.8080 (19s)
+#33 val 0.7935 (19s)
+#34 val 0.8185 (19s)
+#35 val 0.7895 (19s)
+#36 val 0.6880 (19s)
+#37 val 0.8135 (19s)
+#38 val 0.7895 (19s)
+#39 val 0.7860 (19s)
+#40 val 0.8195 (19s)
+#41 val 0.8215 (19s)
+#42 val 0.8255 (19s)
+#43 val 0.8140 (19s)
+#44 val 0.8020 (19s)
+#45 val 0.8130 (19s)
+#46 val 0.7840 (19s)
+#47 val 0.8030 (19s)
+#48 val 0.7035 (19s)
+#49 val 0.8240 (19s)
+#50 val 0.8300 (19s)
+#51 val 0.8290 (19s)
+#52 val 0.8205 (19s)
+#53 val 0.7515 (19s)
+#54 val 0.8300 (19s)
+#55 val 0.7230 (19s)
+#56 val 0.7910 (19s)
+#57 val 0.8280 (19s)
+#58 val 0.8055 (19s)
+#59 val 0.8145 (19s)
+#60 val 0.8205 (19s)
+
+4000 non-empty families of 4000; 6.8 distinct leaves per family, 1.3 words per leaf, 0.19 empty alternatives per group
+
+Examples (positive polarity = evidence for Y=1):
+  [  0/A] two & years | years | 1 | everything | 3 | 5 | wonderful
+  [  0/B] she & years | two & years | 2 | 1 | shot | example
+  [  2/A] case | horrible | told | directed | attempt
+  [  2/B] that's & took & kid | humor | known | today | directed | due | sorry & class
+  [  4/A] girl | woman | classic & light | men | themselves | four | killer
+  [  4/B] man & wonderful | girl | men | women | needs & body | annoying | moment
+  [  6/A] feel & beautiful | maybe | hope | anyway | act | attempt | return | somewhat
+  [  6/B] left & check | death | boy | author | genre | sad | word | check
+  [  8/A] start & went | himself | able | son | turns | lack | non & cover
+  [  8/B] history | ok & middle & learn | turns | important
+  [ 10/A] show | bit | later | mind | kids
+  [ 10/B] bit | mind | taken & mostly | basically
+  [ 12/A] how & we & know | how & why | make & people | then & know | people & she & him | us | understand
+  [ 12/B] how & them | how & we & why | how & know | we & know | people & she & him | know & him | us | understand
+  [ 14/A] lot | fact | sense
+  [ 14/B] its & fact | lot | fact | sense
+  [ 16/A] left | lost | experience | simple | free | information
+  [ 16/B] left | gives | direction | clear & english | killer | clearly
+  [ 18/A] bit | fine | often | using & city | totally | please | involved | actress
+  [ 18/B] rest | enjoyed | favorite | certainly | b | hear | needed | somewhat
+  [ 20/A] music | pretty
+  [ 20/B] music | pretty
+  [ 22/A] performance | main | stars | actor | cover
+  [ 22/B] performance | main | stars | actor
+  [ 24/A] through & hour | second & hour | game | hour | evil & purchased | worked | rock
+
+Wrote /home/coder/ict-project/experiments/ppmi-tm/results/pretrain_profile.json

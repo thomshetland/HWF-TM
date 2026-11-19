@@ -1,0 +1,14 @@
+imdb_flat_seed1: X_train (40000, 5000), X_test (10000, 5000)
+structure ((0, 5000), (3, 1))
+#1 train 88.55% test 86.04% literals per clause: 0.6 words, 76.3 negated (65s)
+#2 train 89.52% test 85.77% literals per clause: 0.5 words, 91.9 negated (54s)
+#3 train 91.26% test 86.93% literals per clause: 0.5 words, 97.0 negated (51s)
+#4 train 91.60% test 86.57% literals per clause: 0.5 words, 103.1 negated (49s)
+#5 train 92.58% test 87.11% literals per clause: 0.5 words, 109.7 negated (48s)
+#6 train 93.40% test 87.37% literals per clause: 0.5 words, 112.0 negated (46s)
+#7 train 93.65% test 87.11% literals per clause: 0.4 words, 118.5 negated (45s)
+#8 train 94.26% test 87.13% literals per clause: 0.4 words, 120.4 negated (45s)
+#9 train 94.33% test 86.92% literals per clause: 0.4 words, 124.4 negated (45s)
+#10 train 94.60% test 86.82% literals per clause: 0.4 words, 127.4 negated (44s)
+
+best test accuracy 87.3700% at epoch 6; wrote /home/coder/ict-project/experiments/two_leaf_htm/results/imdb_flat_seed1.csv

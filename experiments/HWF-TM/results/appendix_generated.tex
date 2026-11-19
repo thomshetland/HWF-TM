@@ -1,0 +1,645 @@
+
+\section{Self-supervised pretext training}
+\label{app:pretext}
+
+Tables~\ref{tab:app-pretext-epochs} and~\ref{tab:app-pretext-summary} give the training history
+and the summary of the two HTM pretext runs whose OR groups are read out as word families
+(Chapter~\ref{chap:hwftm}). Validation accuracy is measured on $2000$ held-out pairs after every
+epoch. The lexical-overlap baseline is the accuracy of the best threshold on the number of words
+the two texts of a pair share; a machine that does not exceed it has learned nothing beyond word
+overlap.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Validation accuracy (\%) of the HTM on the two pretext tasks per epoch. The same-dataset
+pretext was trained for $40$ epochs and the profile pretext for $60$.}
+\label{tab:app-pretext-epochs}
+\begin{tabular}{rcc}
+\toprule
+Epoch & Same-dataset pretext & Profile pretext \\
+\midrule
+$1$ & $52.0$ & $53.0$ \\
+$2$ & $55.8$ & $55.8$ \\
+$3$ & $55.2$ & $53.0$ \\
+$4$ & $59.2$ & $52.8$ \\
+$5$ & $62.5$ & $64.2$ \\
+$10$ & $62.2$ & $67.7$ \\
+$15$ & $67.1$ & $71.4$ \\
+$20$ & $66.2$ & $80.2$ \\
+$25$ & $68.3$ & $77.1$ \\
+$30$ & $70.0$ & $71.4$ \\
+$35$ & $68.8$ & $79.0$ \\
+$40$ & $68.9$ & $82.0$ \\
+$45$ & -- & $81.3$ \\
+$50$ & -- & $83.0$ \\
+$55$ & -- & $72.3$ \\
+$60$ & -- & $82.0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Summary of the two pretext runs. Empty leaves are the fraction of OR alternatives that
+include no literal after training; such leaves are vacuously true. Training time is the sum of
+the per-epoch training times on the GPU.}
+\label{tab:app-pretext-summary}
+\begin{tabular}{lcc}
+\toprule
+ & Same-dataset pretext & Profile pretext \\
+\midrule
+Training pairs & $20\,000$ & $60\,000$ \\
+Pretext vocabulary & $732$ words & $661$ words \\
+Alternatives per OR group ($m$) & $12$ & $8$ \\
+Clauses, $T$, $s$ & $200$, $128$, $100$ & $2000$, $256$, $100$ \\
+Epochs & $40$ & $60$ \\
+Final validation accuracy & $68.9$\% & $82.0$\% \\
+Best validation accuracy (epoch) & $70.0$\% ($30$) & $83.0$\% ($50$) \\
+Lexical-overlap baseline & $50.0$\% & $84.9$\% \\
+Empty leaves after training & $0.9$\% & $2.4$\% \\
+Training time & $3.2$ min & $19.3$ min \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Word families}
+\label{app:families}
+
+This section lists the word families used in Chapter~\ref{chap:experiments}, each family in
+italics and families separated by semicolons, largest first. A family replaces its member words by
+one input bit in the word-family encoding.
+
+\subsection{Families of the profile pretext}
+
+All $112$ families covering $347$ words.
+
+\begingroup\small\raggedright\sloppy
+\textit{band, except, important, known, somewhat, sounds, today, turned};
+\textit{anyway, case, god, highly, score, seemed, yes};
+\textit{complete, despite, hand, horrible, learn, none, power};
+\textit{extremely, finally, light, person, rather, they're, viewer};
+\textit{actress, future, guess, obvious, words, wouldn't};
+\textit{attention, done, perhaps, saying, took, writing};
+\textit{basically, ends, lost, taking, wants, word};
+\textit{call, crap, information, moment, piece, started};
+\textit{copy, dead, expected, open, says, voice};
+\textit{deal, evil, head, heart, living, ok};
+\textit{fast, fight, james, purchased, simple, worse};
+\textit{group, hell, looks, room, start, starts};
+\textit{killed, liked, major, tried, tries, type};
+\textit{7, country, during, release, soon};
+\textit{art, chance, several, talking, written};
+\textit{attempt, b, car, needed, needs};
+\textit{become, certainly, hollywood, kids, non};
+\textit{beyond, directed, modern, overall, problem};
+\textit{clear, friend, return, self, similar};
+\textit{drama, etc, happened, kid, looked};
+\textit{based, easily, material, serious};
+\textit{daughter, husband, mother, son};
+\textit{easy, lines, review, reviews};
+\textit{ever, far, series, true};
+\textit{fall, supposed, went, wonder};
+\textit{game, hour, rock, worked};
+\textit{killer, possible, throughout, usual};
+\textit{lack, opening, waste, within};
+\textit{1, hours, stars};
+\textit{5, cd, year};
+\textit{across, music, sound};
+\textit{action, budget, horror};
+\textit{again, anyone, recommend};
+\textit{along, blood, sex};
+\textit{awful, oh, tv};
+\textit{beginning, every, use};
+\textit{being, fact, left};
+\textit{believe, understand, wait};
+\textit{body, gave, order};
+\textit{bought, buy, money};
+\textit{class, cut, school};
+\textit{clearly, main, view};
+\textit{days, minutes, years};
+\textit{director, guy, plays};
+\textit{everyone, nothing, that's};
+\textit{excellent, original, poor};
+\textit{eyes, mind, shown};
+\textit{father, she, wife};
+\textit{feel, happy, sense};
+\textit{find, help, point};
+\textit{free, matter, writer};
+\textit{friends, girl, woman};
+\textit{go, heard, put};
+\textit{goes, live, man};
+\textit{high, long, wasn't};
+\textit{most, three, worst};
+\textit{night, until, watching};
+\textit{10, 2};
+\textit{acting, plot};
+\textit{actor, role};
+\textit{actors, cast};
+\textit{alone, feeling};
+\textit{am, i'm};
+\textit{aren't, isn't};
+\textit{around, away};
+\textit{author, else};
+\textit{better, fine};
+\textit{big, real};
+\textit{black, men};
+\textit{boring, thing};
+\textit{can't, couldn't};
+\textit{come, comes};
+\textit{comedy, fan};
+\textit{day, single};
+\textit{did, things};
+\textit{didn't, doesn't};
+\textit{down, into};
+\textit{effects, look};
+\textit{end, worth};
+\textit{enough, funny};
+\textit{entertaining, lot};
+\textit{entire, whole};
+\textit{few, those};
+\textit{films, movies};
+\textit{found, gets};
+\textit{fun, video};
+\textit{give, say};
+\textit{going, sure};
+\textit{half, through};
+\textit{hard, us};
+\textit{how, why};
+\textit{i've, seen};
+\textit{job, work};
+\textit{kept, problems};
+\textit{let, wrong};
+\textit{life, world};
+\textit{make, makes};
+\textit{many, myself};
+\textit{off, over};
+\textit{old, young};
+\textit{our, shows};
+\textit{own, quite};
+\textit{place, seriously};
+\textit{play, playing};
+\textit{pretty, script};
+\textit{read, reading};
+\textit{scene, scenes};
+\textit{song, songs};
+\textit{take, takes};
+\textit{times, top};
+\textit{town, version};
+\textit{want, you're}.
+\par\endgroup
+
+\subsection{Families of the same-dataset pretext}
+
+All $137$ families covering $543$ words.
+
+\begingroup\small\raggedright\sloppy
+\textit{add, gives, main, performance, played, please, scene, sense, she's, strong, watching, world};
+\textit{album, book, books, easy, great, not, reviews, songs, used, with, would, your};
+\textit{2, 3, author, bought, cd, different, learn, price, product, work};
+\textit{action, any, makes, making, might, movies, sorry, take, through, worse};
+\textit{awful, copy, half, hand, him, more, now, one, think, why};
+\textit{because, bit, classic, fact, given, lost, moments, other, two, yes};
+\textit{direction, end, films, he's, hope, into, love, saw, scenes, story};
+\textit{always, from, gets, i'm, seen, short, star, time, tv};
+\textit{american, director, enough, friends, people, school, watched, were, years};
+\textit{both, everything, evil, give, man, role, should, something, watch};
+\textit{6, amazon, buy, information, months, rating, use, using};
+\textit{about, also, best, character, down, maybe, several, town};
+\textit{guy, it's, its, killer, lot, never, rest, second};
+\textit{horror, lead, looks, made, production, show, whole, wrong};
+\textit{10, film, funny, goes, high, if, viewer};
+\textit{20, cheap, children, future, happens, stuff, until};
+\textit{absolutely, definitely, expect, play, right, saying, score};
+\textit{almost, cinema, including, really, sex, where, woman};
+\textit{bad, comes, felt, full, least, that's, usual};
+\textit{course, ever, every, point, real, waste, well};
+\textit{death, go, life, plot, same, three, us};
+\textit{does, here, job, mr, released, though, title};
+\textit{1, cover, hear, need, read, reading};
+\textit{acting, actors, interest, performances, sort, what};
+\textit{been, music, name, their, turns, wife};
+\textit{else, let, nothing, parts, person, save};
+\textit{eyes, hard, important, shot, tries, wants};
+\textit{5, came, part, seem, worked};
+\textit{actor, completely, know, off, someone};
+\textit{along, black, fun, has, hollywood};
+\textit{an, budget, low, michael, screen};
+\textit{being, or, special, wasn't, women};
+\textit{between, everyone, kind, knows, then};
+\textit{can't, game, small, told, won't};
+\textit{cast, during, himself, interesting, no};
+\textit{especially, first, girl, up, worst};
+\textit{have, heard, looking, sound, you};
+\textit{heart, must, seriously, still, there};
+\textit{however, lines, most, see, thought};
+\textit{actually, last, rather, script};
+\textit{alone, call, could, crap};
+\textit{am, deal, nice, within};
+\textit{around, brilliant, father, thing};
+\textit{attempt, dead, entertaining, even};
+\textit{band, get, got, money};
+\textit{based, become, didn't, fan};
+\textit{before, may, mother, seeing};
+\textit{believe, big, episode, usually};
+\textit{characters, starts, turn, very};
+\textit{cut, men, often, went};
+\textit{dialogue, itself, non, too};
+\textit{doing, human, knew, known};
+\textit{done, entire, idea, roles};
+\textit{extremely, live, trying, view};
+\textit{guess, home, house, killed};
+\textit{his, plays, such, while};
+\textit{make, terrible, wanted, we};
+\textit{my, sounds, working, written};
+\textit{needs, purchased, quality, review};
+\textit{place, simple, somewhat, yet};
+\textit{4, giving, year};
+\textit{again, come, seems};
+\textit{another, throughout, you're};
+\textit{art, couple, looked};
+\textit{as, four, movie};
+\textit{at, but, feeling};
+\textit{b, reason, remember};
+\textit{box, husband, wait};
+\textit{by, called, power};
+\textit{care, family, i've};
+\textit{case, run, yourself};
+\textit{certainly, head, opening};
+\textit{clear, problem, problems};
+\textit{clearly, long, tried};
+\textit{dark, day, perhaps};
+\textit{despite, drama, only};
+\textit{disappointed, find, words};
+\textit{each, mean, moment};
+\textit{for, needed, song};
+\textit{had, our, these};
+\textit{happy, recommend, will};
+\textit{hour, poor, running};
+\textit{john, minutes, video};
+\textit{kept, middle, type};
+\textit{kid, probably, simply};
+\textit{s, those, top};
+\textit{act, say};
+\textit{already, she};
+\textit{although, number};
+\textit{anyone, beautiful};
+\textit{anything, becomes};
+\textit{are, way};
+\textit{audience, old};
+\textit{away, behind};
+\textit{back, want};
+\textit{better, ends};
+\textit{blood, can};
+\textit{boy, guys};
+\textit{car, hilarious};
+\textit{child, coming};
+\textit{comedy, do};
+\textit{cool, sure};
+\textit{country, fine};
+\textit{did, mind};
+\textit{doesn't, myself};
+\textit{don't, talking};
+\textit{dvd, return};
+\textit{enjoy, oh};
+\textit{enjoyable, later};
+\textit{fans, slow};
+\textit{favorite, material};
+\textit{feel, out};
+\textit{few, laugh};
+\textit{final, things};
+\textit{finally, like};
+\textit{flick, original};
+\textit{gave, novel};
+\textit{girls, series};
+\textit{god, side};
+\textit{happen, thinking};
+\textit{haven't, major};
+\textit{hell, stupid};
+\textit{history, mostly};
+\textit{hit, picture};
+\textit{huge, understand};
+\textit{humor, violence};
+\textit{instead, true};
+\textit{just, young};
+\textit{kill, style};
+\textit{leave, past};
+\textit{night, some};
+\textit{pretty, war};
+\textit{serious, you'll};
+\textit{start, tell};
+\textit{taking, without};
+\textit{that, them};
+\textit{there's, when}.
+\par\endgroup
+
+\subsection{PPMI families}
+
+A random sample of $40$ of the $866$ PPMI families, which together cover $4534$ words. The complete list is part of the project repository.
+
+\begingroup\small\raggedright\sloppy
+\textit{ahead, alert, bone, coming, girl's, he'll, instantly, lets, picks, repeatedly, revolves, saves, somehow, threatening, thrown, throws, wound};
+\textit{blind, eyed, gray, holds, makes, mistaken, pays, puts, spell, walker, wind};
+\textit{anything, bored, bother, either, else, honestly, make, nothing, something, wasting};
+\textit{accompanied, appearing, appears, brief, briefly, concerns, flashbacks, notably, obscure};
+\textit{beautiful, beautifully, beauty, captivating, elegant, moving, story, stunning, tale};
+\textit{biggest, cringe, embarrassing, embarrassment, inane, slap, unbelievably};
+\textit{greek, language, speak, speaking, speaks, spoken, translation};
+\textit{90, half, hour, minute, minutes, seconds};
+\textit{breaking, bridge, square, trade, upper, wave};
+\textit{cliff, deadly, escaped, hide, jumps, screams};
+\textit{complaints, guarantee, luck, noticed, twice};
+\textit{connect, connected, connection, connections, memory};
+\textit{10, pg, rated, rating};
+\textit{camp, hills, massacre, texas};
+\textit{climax, final, legend, trilogy};
+\textit{contrived, dimensional, implausible, overly};
+\textit{eight, june, three, two};
+\textit{baker, careers, nelson};
+\textit{big, bigger, super};
+\textit{broadway, performers, stage};
+\textit{clues, mysteries, mystery};
+\textit{dislike, minded, narrow};
+\textit{el, n, y};
+\textit{happen, happened, happening};
+\textit{m, s, u};
+\textit{mirror, rooms, walls};
+\textit{snow, tree, trees};
+\textit{talk, talking, talks};
+\textit{always, fabulous};
+\textit{awesome, fan};
+\textit{biased, opinions};
+\textit{brazil, vote};
+\textit{burned, gas};
+\textit{delivered, delivery};
+\textit{deserved, oscars};
+\textit{lips, photographer};
+\textit{methods, studying};
+\textit{operation, security};
+\textit{scenes, sequences};
+\textit{toy, toys}.
+\par\endgroup
+
+\section{Downstream classification with 1000 labeled texts}
+\label{app:n1000}
+
+Tables~\ref{tab:app-n1000-accuracy} and~\ref{tab:app-n1000-size} give the complete results of the
+clause sweep with $1000$ labeled training texts (Section~\ref{sec:results}): every input,
+including the random controls, at $250$ to $2000$ clauses, after $20$ epochs, as the mean over the
+three label draws. The TM uses $s = 5.0$, weighted clauses and $T = 0.8 \times$ the number of
+clauses.
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Test accuracy (\%) with $1000$ labeled training texts, mean $\pm$ standard deviation over
+three label draws.}
+\label{tab:app-n1000-accuracy}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Input & $250$ clauses & $500$ clauses & $1000$ clauses & $2000$ clauses \\
+\midrule
+IMDB & TM & $75.3 \pm 0.1$ & $77.4 \pm 1.3$ & $79.5 \pm 0.9$ & $79.3 \pm 1.1$ \\
+ & PPMI-TM & $79.5 \pm 0.2$ & $80.6 \pm 0.2$ & $80.6 \pm 0.6$ & $81.5 \pm 0.0$ \\
+ & PPMI control & $68.9 \pm 0.5$ & $70.3 \pm 0.3$ & $71.3 \pm 0.4$ & $71.5 \pm 0.6$ \\
+ & HWF-TM (profile) & $74.3 \pm 0.9$ & $75.6 \pm 0.7$ & $77.6 \pm 0.2$ & $77.1 \pm 0.4$ \\
+ & HWF-TM (profile) control & $74.4 \pm 0.7$ & $76.0 \pm 0.5$ & $78.1 \pm 0.1$ & $78.8 \pm 0.2$ \\
+ & HWF-TM (same-dataset) & $70.4 \pm 0.6$ & $72.5 \pm 0.2$ & $73.3 \pm 0.8$ & $72.6 \pm 2.7$ \\
+ & HWF-TM (same-dataset) control & $68.9 \pm 0.4$ & $70.5 \pm 0.6$ & $70.4 \pm 2.2$ & $72.4 \pm 0.8$ \\
+\midrule
+Amazon & TM & $69.3 \pm 1.0$ & $70.9 \pm 1.2$ & $72.7 \pm 0.2$ & $74.1 \pm 0.8$ \\
+ & PPMI-TM & $72.7 \pm 0.7$ & $73.9 \pm 0.7$ & $74.5 \pm 0.5$ & $75.4 \pm 0.5$ \\
+ & PPMI control & $65.8 \pm 0.5$ & $66.8 \pm 1.0$ & $67.9 \pm 0.8$ & $67.9 \pm 1.6$ \\
+ & HWF-TM (profile) & $68.7 \pm 1.0$ & $71.0 \pm 0.7$ & $71.3 \pm 0.9$ & $72.9 \pm 0.7$ \\
+ & HWF-TM (profile) control & $68.6 \pm 0.8$ & $70.2 \pm 0.2$ & $71.4 \pm 0.9$ & $72.7 \pm 0.6$ \\
+ & HWF-TM (same-dataset) & $63.5 \pm 0.8$ & $65.7 \pm 1.4$ & $66.9 \pm 1.6$ & $68.4 \pm 1.5$ \\
+ & HWF-TM (same-dataset) control & $65.7 \pm 0.7$ & $66.6 \pm 1.4$ & $68.4 \pm 1.7$ & $69.6 \pm 1.1$ \\
+\midrule
+Finance & TM & $66.0 \pm 0.8$ & $66.6 \pm 0.3$ & $67.5 \pm 0.9$ & $67.9 \pm 0.4$ \\
+ & PPMI-TM & $65.4 \pm 1.1$ & $66.7 \pm 1.4$ & $67.3 \pm 0.3$ & $68.5 \pm 1.0$ \\
+ & PPMI control & $65.5 \pm 0.4$ & $66.1 \pm 0.5$ & $67.1 \pm 0.6$ & $68.1 \pm 0.4$ \\
+ & HWF-TM (profile) & $66.2 \pm 1.2$ & $66.3 \pm 0.4$ & $67.9 \pm 1.0$ & $68.0 \pm 0.8$ \\
+ & HWF-TM (profile) control & $65.2 \pm 1.8$ & $67.2 \pm 0.9$ & $66.7 \pm 0.7$ & $68.0 \pm 0.3$ \\
+ & HWF-TM (same-dataset) & $64.5 \pm 1.1$ & $65.7 \pm 1.3$ & $66.6 \pm 0.3$ & $67.5 \pm 0.6$ \\
+ & HWF-TM (same-dataset) control & $65.1 \pm 0.4$ & $66.4 \pm 1.2$ & $66.6 \pm 0.2$ & $67.9 \pm 0.9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Clause length, model size and training time with $1000$ labeled training texts, mean over
+three label draws. Literals per clause are the included literals, positive and negated, averaged
+over all clauses; \emph{pos.} is the positive literals per clause at $2000$ clauses. Total literals
+are given in thousands. Training time is the sum over the $20$ epochs on one CPU thread.}
+\label{tab:app-n1000-size}
+\begin{tabular}{llrrrrrrr}
+\toprule
+ & & \multicolumn{4}{c}{Literals per clause} & \multicolumn{3}{c}{$2000$ clauses} \\
+\cmidrule(lr){3-6} \cmidrule(lr){7-9}
+Dataset & Input & $250$ & $500$ & $1000$ & $2000$ & pos. & total (k) & time (s) \\
+\midrule
+IMDB & TM & $40$ & $53$ & $58$ & $61$ & $0.73$ & $245$ & $143$ \\
+ & PPMI-TM & $22$ & $26$ & $28$ & $29$ & $1.00$ & $118$ & $37$ \\
+ & PPMI control & $20$ & $25$ & $29$ & $31$ & $0.99$ & $122$ & $50$ \\
+ & HWF-TM (profile) & $40$ & $54$ & $61$ & $61$ & $0.79$ & $246$ & $142$ \\
+ & HWF-TM (profile) control & $37$ & $50$ & $57$ & $62$ & $0.79$ & $250$ & $142$ \\
+ & HWF-TM (same-dataset) & $39$ & $51$ & $65$ & $70$ & $0.95$ & $279$ & $165$ \\
+ & HWF-TM (same-dataset) control & $36$ & $54$ & $60$ & $68$ & $0.94$ & $271$ & $170$ \\
+\midrule
+Amazon & TM & $43$ & $62$ & $71$ & $81$ & $0.75$ & $322$ & $210$ \\
+ & PPMI-TM & $37$ & $50$ & $59$ & $61$ & $0.76$ & $243$ & $81$ \\
+ & PPMI control & $32$ & $45$ & $54$ & $56$ & $0.76$ & $225$ & $90$ \\
+ & HWF-TM (profile) & $50$ & $67$ & $74$ & $84$ & $0.76$ & $336$ & $203$ \\
+ & HWF-TM (profile) control & $43$ & $58$ & $73$ & $77$ & $0.77$ & $308$ & $206$ \\
+ & HWF-TM (same-dataset) & $44$ & $65$ & $82$ & $96$ & $0.82$ & $383$ & $219$ \\
+ & HWF-TM (same-dataset) control & $47$ & $70$ & $80$ & $95$ & $0.82$ & $379$ & $216$ \\
+\midrule
+Finance & TM & $63$ & $83$ & $100$ & $106$ & $0.80$ & $636$ & $268$ \\
+ & PPMI-TM & $60$ & $75$ & $87$ & $98$ & $0.79$ & $588$ & $213$ \\
+ & PPMI control & $53$ & $74$ & $89$ & $95$ & $0.79$ & $568$ & $221$ \\
+ & HWF-TM (profile) & $74$ & $93$ & $101$ & $109$ & $0.80$ & $656$ & $260$ \\
+ & HWF-TM (profile) control & $64$ & $78$ & $94$ & $106$ & $0.80$ & $637$ & $263$ \\
+ & HWF-TM (same-dataset) & $62$ & $87$ & $98$ & $106$ & $0.80$ & $637$ & $259$ \\
+ & HWF-TM (same-dataset) control & $68$ & $84$ & $98$ & $100$ & $0.81$ & $602$ & $258$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Downstream classification with all labeled texts}
+\label{app:full}
+
+Table~\ref{tab:app-full} gives the complete results with the full training split and $2000$
+clauses, the benchmark setting, after $10$ epochs; one run per input.
+Table~\ref{tab:app-full-sweep} gives the clause sweep with all labels, which was run for the TM
+and the same-dataset families only.
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{All labeled texts, $2000$ clauses, $T = 1600$, $10$ epochs. Width is the number of input
+features; total literals are in thousands; training time is the sum over the $10$ epochs on one
+CPU thread.}
+\label{tab:app-full}
+\begin{tabular}{llrrrrrrr}
+\toprule
+Dataset & Input & Width & Train acc. & Test acc. & Lit./clause & pos. & total (k) & time (min) \\
+\midrule
+IMDB & TM & $5000$ & $95.20$ & $87.06$ & $137$ & $0.38$ & $548$ & $48$ \\
+ & PPMI-TM & $1535$ & $92.58$ & $84.31$ & $106$ & $0.40$ & $424$ & $18$ \\
+ & PPMI control & $1538$ & $87.20$ & $76.96$ & $116$ & $0.37$ & $463$ & $26$ \\
+ & HWF-TM (profile) & $4765$ & $94.78$ & $85.56$ & $180$ & $0.36$ & $720$ & $52$ \\
+ & HWF-TM (profile) control & $4765$ & $95.03$ & $85.82$ & $178$ & $0.34$ & $711$ & $51$ \\
+ & HWF-TM (same-dataset) & $4595$ & $92.11$ & $83.76$ & $120$ & $0.58$ & $482$ & $59$ \\
+ & HWF-TM (same-dataset) control & $4595$ & $92.24$ & $83.38$ & $151$ & $0.51$ & $603$ & $61$ \\
+\midrule
+Amazon & TM & $5000$ & $88.31$ & $82.11$ & $135$ & $0.61$ & $538$ & $74$ \\
+ & PPMI-TM & $2119$ & $87.36$ & $80.06$ & $174$ & $0.43$ & $696$ & $34$ \\
+ & PPMI control & $2109$ & $84.08$ & $75.40$ & $158$ & $0.44$ & $633$ & $40$ \\
+ & HWF-TM (profile) & $4765$ & $87.98$ & $81.27$ & $180$ & $0.56$ & $718$ & $76$ \\
+ & HWF-TM (profile) control & $4765$ & $87.84$ & $81.14$ & $150$ & $0.59$ & $598$ & $76$ \\
+ & HWF-TM (same-dataset) & $4594$ & $84.16$ & $77.58$ & $170$ & $0.61$ & $678$ & $83$ \\
+ & HWF-TM (same-dataset) control & $4594$ & $85.97$ & $77.53$ & $202$ & $0.59$ & $809$ & $78$ \\
+\midrule
+Finance & TM & $5000$ & $79.65$ & $70.28$ & $88$ & $0.81$ & $528$ & $9$ \\
+ & PPMI-TM & $3999$ & $81.02$ & $70.28$ & $89$ & $0.77$ & $534$ & $7$ \\
+ & PPMI control & $4070$ & $81.20$ & $70.28$ & $89$ & $0.77$ & $531$ & $7$ \\
+ & HWF-TM (profile) & $4885$ & $79.16$ & $69.97$ & $95$ & $0.78$ & $568$ & $9$ \\
+ & HWF-TM (profile) control & $4880$ & $80.86$ & $71.41$ & $90$ & $0.80$ & $543$ & $9$ \\
+ & HWF-TM (same-dataset) & $4759$ & $81.04$ & $70.69$ & $98$ & $0.79$ & $589$ & $8$ \\
+ & HWF-TM (same-dataset) control & $4762$ & $80.14$ & $70.79$ & $90$ & $0.79$ & $537$ & $9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Clause sweep with all labeled texts and $T = 0.8 \times$ the number of clauses, $10$
+epochs, one run per cell: test accuracy (\%) and literals per clause.}
+\label{tab:app-full-sweep}
+\begin{tabular}{llcccccccc}
+\toprule
+ & & \multicolumn{4}{c}{Test accuracy (\%)} & \multicolumn{4}{c}{Literals per clause} \\
+\cmidrule(lr){3-6} \cmidrule(lr){7-10}
+Dataset & Input & $250$ & $500$ & $1000$ & $2000$ & $250$ & $500$ & $1000$ & $2000$ \\
+\midrule
+IMDB & TM & $85.56$ & $86.40$ & $86.97$ & $87.06$ & $89$ & $108$ & $127$ & $137$ \\
+ & HWF-TM (same-dataset) & $81.80$ & $82.97$ & $83.38$ & $83.76$ & $81$ & $105$ & $130$ & $120$ \\
+ & HWF-TM (same-dataset) control & $81.03$ & $81.55$ & $82.88$ & $83.38$ & $117$ & $122$ & $136$ & $151$ \\
+\midrule
+Amazon & TM & $79.67$ & $80.56$ & $81.24$ & $82.11$ & $92$ & $97$ & $112$ & $135$ \\
+ & HWF-TM (same-dataset) & $73.98$ & $76.17$ & $77.12$ & $77.58$ & $118$ & $146$ & $212$ & $170$ \\
+ & HWF-TM (same-dataset) control & $74.24$ & $76.89$ & $77.19$ & $77.53$ & $126$ & $190$ & $174$ & $202$ \\
+\midrule
+Finance & TM & $68.94$ & $68.63$ & $69.56$ & $70.28$ & $81$ & $77$ & $92$ & $88$ \\
+ & HWF-TM (same-dataset) & $65.74$ & $67.29$ & $68.94$ & $70.69$ & $67$ & $79$ & $88$ & $98$ \\
+ & HWF-TM (same-dataset) control & $68.52$ & $68.63$ & $69.25$ & $70.79$ & $61$ & $74$ & $89$ & $90$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Learning curves with 200 labeled texts}
+\label{app:learning-curves}
+
+Figure~\ref{fig:learning-curves} and Table~\ref{tab:learning-curves} show the test accuracy of
+the TM with each input after every epoch, trained on $200$ labeled texts with $2000$ clauses and
+$T = 1600$ for $100$ epochs. Each curve is a single run on the same $200$ texts.
+
+\begin{figure}[H]
+\centering
+% Generated by experiments/HWF-TM/plot_curves.py.
+\includegraphics[width=\linewidth]{Figures/learning_curves_N200.pdf}
+\caption{Test accuracy per epoch with $200$ labeled training texts and $2000$ clauses. Dashed lines
+are the random controls of the families of the same color. Each panel has its own y-axis.}
+\label{fig:learning-curves}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Test accuracy (\%) per epoch with $200$ labeled training texts and $2000$ clauses, at
+selected epochs. The best input per row is in bold. \emph{Control}: the random control of the
+family source to its left.}
+\label{tab:learning-curves}
+\begin{tabular}{llccccccc}
+\toprule
+ & & & \multicolumn{2}{c}{PPMI} & \multicolumn{4}{c}{HWF-TM} \\
+\cmidrule(lr){4-5} \cmidrule(lr){6-9}
+Dataset & Epoch & TM & PPMI-TM & control & profile & control & same-ds. & control \\
+\midrule
+IMDB & $1$ & $49.5$ & $49.9$ & $49.5$ & $49.4$ & $\mathbf{50.5}$ & $49.5$ & $49.4$ \\
+ & $5$ & $64.5$ & $\mathbf{75.2}$ & $61.9$ & $62.4$ & $64.3$ & $52.2$ & $50.5$ \\
+ & $10$ & $71.0$ & $\mathbf{76.6}$ & $65.4$ & $68.9$ & $69.5$ & $66.3$ & $65.2$ \\
+ & $20$ & $73.6$ & $\mathbf{77.8}$ & $65.1$ & $71.7$ & $72.1$ & $67.5$ & $67.5$ \\
+ & $30$ & $73.7$ & $\mathbf{77.8}$ & $64.5$ & $71.3$ & $71.8$ & $65.5$ & $66.3$ \\
+ & $40$ & $73.4$ & $\mathbf{77.3}$ & $65.7$ & $69.9$ & $70.6$ & $66.4$ & $68.1$ \\
+ & $50$ & $71.9$ & $\mathbf{77.1}$ & $65.9$ & $69.6$ & $69.7$ & $67.4$ & $68.0$ \\
+ & $60$ & $72.5$ & $\mathbf{77.2}$ & $65.5$ & $68.6$ & $69.1$ & $68.3$ & $68.1$ \\
+ & $70$ & $72.4$ & $\mathbf{77.0}$ & $65.4$ & $68.2$ & $68.5$ & $68.2$ & $68.2$ \\
+ & $80$ & $71.7$ & $\mathbf{77.0}$ & $65.2$ & $68.1$ & $68.2$ & $68.5$ & $68.2$ \\
+ & $90$ & $72.0$ & $\mathbf{77.4}$ & $64.9$ & $67.7$ & $67.8$ & $68.4$ & $68.4$ \\
+ & $100$ & $70.7$ & $\mathbf{77.4}$ & $65.0$ & $67.5$ & $67.6$ & $68.6$ & $68.4$ \\
+\midrule
+Amazon & $1$ & $49.2$ & $\mathbf{50.9}$ & $50.8$ & $49.5$ & $50.8$ & $49.4$ & $49.2$ \\
+ & $5$ & $55.3$ & $\mathbf{64.7}$ & $58.5$ & $54.6$ & $57.4$ & $58.6$ & $52.5$ \\
+ & $10$ & $63.1$ & $\mathbf{67.0}$ & $61.6$ & $63.4$ & $64.5$ & $58.3$ & $61.4$ \\
+ & $20$ & $66.0$ & $\mathbf{67.3}$ & $61.6$ & $66.4$ & $63.9$ & $59.4$ & $62.5$ \\
+ & $30$ & $64.4$ & $\mathbf{67.0}$ & $61.3$ & $64.3$ & $64.4$ & $59.2$ & $62.2$ \\
+ & $40$ & $64.1$ & $\mathbf{66.5}$ & $61.2$ & $65.4$ & $63.6$ & $59.4$ & $62.5$ \\
+ & $50$ & $64.6$ & $\mathbf{66.2}$ & $61.4$ & $65.3$ & $64.4$ & $60.5$ & $62.6$ \\
+ & $60$ & $65.4$ & $\mathbf{66.3}$ & $61.4$ & $64.7$ & $64.5$ & $59.8$ & $62.6$ \\
+ & $70$ & $65.4$ & $\mathbf{66.7}$ & $61.3$ & $65.5$ & $64.6$ & $60.0$ & $62.5$ \\
+ & $80$ & $65.5$ & $\mathbf{66.6}$ & $61.2$ & $65.7$ & $64.5$ & $60.4$ & $62.4$ \\
+ & $90$ & $65.4$ & $\mathbf{66.3}$ & $61.2$ & $65.4$ & $64.5$ & $60.2$ & $62.0$ \\
+ & $100$ & $65.5$ & $\mathbf{66.2}$ & $61.2$ & $65.3$ & $64.3$ & $60.3$ & $62.1$ \\
+\midrule
+Finance & $1$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ & $\mathbf{59.4}$ \\
+ & $5$ & $60.2$ & $60.8$ & $60.0$ & $61.0$ & $59.4$ & $\mathbf{61.2}$ & $59.4$ \\
+ & $10$ & $62.8$ & $62.7$ & $61.7$ & $\mathbf{63.2}$ & $\mathbf{63.2}$ & $61.1$ & $61.8$ \\
+ & $20$ & $\mathbf{63.6}$ & $63.2$ & $63.4$ & $63.5$ & $63.0$ & $63.5$ & $63.5$ \\
+ & $30$ & $\mathbf{63.8}$ & $\mathbf{63.8}$ & $\mathbf{63.8}$ & $63.0$ & $\mathbf{63.8}$ & $63.3$ & $63.5$ \\
+ & $40$ & $63.2$ & $64.3$ & $\mathbf{64.5}$ & $63.8$ & $64.2$ & $63.3$ & $63.6$ \\
+ & $50$ & $64.0$ & $\mathbf{64.6}$ & $64.5$ & $63.5$ & $64.2$ & $63.8$ & $63.7$ \\
+ & $60$ & $\mathbf{64.6}$ & $64.4$ & $64.0$ & $64.0$ & $63.7$ & $63.1$ & $63.8$ \\
+ & $70$ & $\mathbf{64.8}$ & $64.3$ & $64.5$ & $63.5$ & $63.3$ & $62.5$ & $63.3$ \\
+ & $80$ & $64.7$ & $\mathbf{64.8}$ & $63.1$ & $64.4$ & $63.3$ & $62.6$ & $64.2$ \\
+ & $90$ & $64.4$ & $\mathbf{65.0}$ & $64.1$ & $64.3$ & $62.8$ & $61.9$ & $63.5$ \\
+ & $100$ & $64.3$ & $64.2$ & $63.9$ & $\mathbf{65.2}$ & $62.3$ & $62.8$ & $63.8$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Example clauses}
+\label{app:clauses}
+
+The following clauses were learned on IMDB with $1000$ labeled texts, $250$ clauses and the first
+label draw. For each input and each class, the clause with the largest weight among those that
+contain at least one positive literal is shown. Families appear in parentheses, joined by $\lor$;
+only the first ten literals are written out. The clauses illustrate Section~\ref{sec:results-clauses}:
+a clause is one or two positive literals followed by a long list of negated ones.
+
+\subsection{TM}
+\begin{itemize}
+  \item Votes for \emph{positive}, weight $63$, $31$ literals ($2$ positive): \textit{for} $\land$ \textit{life} $\land$ $\lnot$\textit{simply} $\land$ $\lnot$\textit{boring} $\land$ $\lnot$\textit{entire} $\land$ $\lnot$\textit{son} $\land$ $\lnot$\textit{ones} $\land$ $\lnot$\textit{happy} $\land$ $\lnot$\textit{killer} $\land$ $\lnot$\textit{room} $\land \dots$ ($21$ more negated literals)
+  \item Votes for \emph{negative}, weight $91$, $11$ literals ($1$ positive): \textit{bad} $\land$ $\lnot$\textit{definitely} $\land$ $\lnot$\textit{easily} $\land$ $\lnot$\textit{leads} $\land$ $\lnot$\textit{nicely} $\land$ $\lnot$\textit{lovers} $\land$ $\lnot$\textit{private} $\land$ $\lnot$\textit{guns} $\land$ $\lnot$\textit{gruesome} $\land$ $\lnot$\textit{arm} $\land \dots$ ($1$ more negated literals)
+\end{itemize}
+
+\subsection{PPMI-TM}
+\begin{itemize}
+  \item Votes for \emph{positive}, weight $61$, $4$ literals ($1$ positive): (\textit{life} $\lor$ \textit{lives} $\lor$ \textit{living}) $\land$ $\lnot$(\textit{eddie} $\lor$ \textit{murphy} $\lor$ \textit{saturday}) $\land$ $\lnot$(\textit{he'd} $\lor$ \textit{kicked} $\lor$ \textit{lay}) $\land$ $\lnot$\textit{mighty}
+  \item Votes for \emph{negative}, weight $62$, $11$ literals ($1$ positive): (\textit{adequate} $\lor$ \textit{credit} $\lor$ \textit{displayed} $\lor$ \textit{here} $\lor$ \textit{material} $\lor$ \textit{note} $\lor$ \textit{noted}) $\land$ $\lnot$(\textit{highly} $\lor$ \textit{recommended}) $\land$ $\lnot$(\textit{cream} $\lor$ \textit{drink} $\lor$ \textit{drinking} $\lor$ \textit{milk}) $\land$ $\lnot$(\textit{include} $\lor$ \textit{includes} $\lor$ \textit{variety} $\lor$ \textit{various}) $\land$ $\lnot$(\textit{huge} $\lor$ \textit{lots} $\lor$ \textit{packed} $\lor$ \textit{tons}) $\land$ $\lnot$(\textit{classic} $\lor$ \textit{classics}) $\land$ $\lnot$(\textit{perform} $\lor$ \textit{stand}) $\land$ $\lnot$(\textit{operation} $\lor$ \textit{security}) $\land$ $\lnot$\textit{romp} $\land$ $\lnot$\textit{carl} $\land \dots$ ($1$ more negated literals)
+\end{itemize}
+
+\subsection{HWF-TM (profile)}
+\begin{itemize}
+  \item Votes for \emph{positive}, weight $64$, $46$ literals ($1$ positive): \textit{two} $\land$ $\lnot$\textit{bad} $\land$ $\lnot$\textit{storyline} $\land$ $\lnot$\textit{incredibly} $\land$ $\lnot$\textit{meant} $\land$ $\lnot$\textit{mood} $\land$ $\lnot$\textit{won} $\land$ $\lnot$\textit{natural} $\land$ $\lnot$\textit{train} $\land$ $\lnot$\textit{extreme} $\land \dots$ ($36$ more negated literals)
+  \item Votes for \emph{negative}, weight $71$, $34$ literals ($1$ positive): (\textit{complete} $\lor$ \textit{despite} $\lor$ \textit{hand} $\lor$ \textit{horrible} $\lor$ \textit{learn} $\lor$ \textit{none} $\lor$ \textit{power}) $\land$ $\lnot$\textit{yet} $\land$ $\lnot$\textit{classic} $\land$ $\lnot$\textit{turn} $\land$ $\lnot$\textit{episode} $\land$ $\lnot$\textit{girls} $\land$ $\lnot$\textit{peter} $\land$ $\lnot$\textit{producers} $\land$ $\lnot$\textit{longer} $\land$ $\lnot$\textit{positive} $\land \dots$ ($24$ more negated literals)
+\end{itemize}

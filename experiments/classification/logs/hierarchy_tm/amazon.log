@@ -1,0 +1,17 @@
+Loading and tokenizing...
+X_train (40000, 5000), X_test (10000, 5000)
+
+Accuracy over 10 epochs:
+
+#1 Train: 82.15% Accuracy: 80.03% Training: 576.43s Testing: 30.52s
+#2 Train: 82.80% Accuracy: 80.16% Training: 258.69s Testing: 26.65s
+#3 Train: 84.52% Accuracy: 81.38% Training: 421.54s Testing: 27.81s
+#4 Train: 86.09% Accuracy: 82.13% Training: 170.65s Testing: 16.47s
+#5 Train: 86.01% Accuracy: 81.11% Training: 133.98s Testing: 16.37s
+#6 Train: 86.56% Accuracy: 81.69% Training: 131.44s Testing: 16.22s
+#7 Train: 87.22% Accuracy: 81.67% Training: 130.36s Testing: 16.56s
+#8 Train: 87.17% Accuracy: 81.34% Training: 128.61s Testing: 16.47s
+#9 Train: 88.38% Accuracy: 82.46% Training: 127.11s Testing: 16.50s
+#10 Train: 86.80% Accuracy: 81.22% Training: 125.83s Testing: 16.38s
+
+Wrote per-epoch metrics to /home/coder/ict-project/experiments/classification/hierarchy_tm/amazon.csv

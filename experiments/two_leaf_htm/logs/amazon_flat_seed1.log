@@ -1,0 +1,14 @@
+amazon_flat_seed1: X_train (40000, 5000), X_test (10000, 5000)
+structure ((0, 5000), (3, 1))
+#1 train 82.20% test 80.10% literals per clause: 0.7 words, 84.7 negated (71s)
+#2 train 83.95% test 81.31% literals per clause: 0.7 words, 93.0 negated (63s)
+#3 train 85.45% test 82.27% literals per clause: 0.6 words, 104.3 negated (60s)
+#4 train 86.05% test 81.60% literals per clause: 0.7 words, 108.8 negated (59s)
+#5 train 86.72% test 82.00% literals per clause: 0.7 words, 113.6 negated (57s)
+#6 train 84.71% test 79.71% literals per clause: 0.6 words, 116.9 negated (57s)
+#7 train 85.46% test 80.38% literals per clause: 0.6 words, 122.1 negated (56s)
+#8 train 87.93% test 82.00% literals per clause: 0.6 words, 122.0 negated (55s)
+#9 train 88.39% test 82.07% literals per clause: 0.6 words, 124.3 negated (54s)
+#10 train 87.68% test 81.30% literals per clause: 0.6 words, 124.0 negated (54s)
+
+best test accuracy 82.2700% at epoch 3; wrote /home/coder/ict-project/experiments/two_leaf_htm/results/amazon_flat_seed1.csv

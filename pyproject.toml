@@ -1,0 +1,27 @@
+[project]
+name = "ict-project"
+version = "1.0.0"
+description = "Logical self-supervised learning of language with hierarchical Tsetlin machines (ICT pre-project, UiA)"
+readme = "README.md"
+requires-python = ">=3.12"
+# Exact versions: k-means, the Tsetlin machines and the plots all depend on them.
+# pycuda must be built from source against this NumPy; see docs/07-environment.md.
+dependencies = [
+    "numpy==2.5.3",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.0",
+    "matplotlib==3.11.1",
+    "pyTsetlinMachine==0.6.6",
+    "pycuda==2026.1",
+    "PyHierarchicalTsetlinMachineCUDA==0.3.1",
+]
+
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[tool.ruff]
+line-length = 100
+src = [".", "experiments/HWF-TM", "experiments/or_families"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

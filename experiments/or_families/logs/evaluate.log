@@ -1,0 +1,8 @@
+ppmi-pairs_V96 (vocabulary 96)
+  family set                  n words  sentiment  dataset   PMI (control)
+  learned                    18    95      +0.12    +0.27   0.40 (0.39)
+  ppmi, same vocabulary      20    57      +0.67    +0.78   0.58 (0.37)
+ppmi-pairs_V300 (vocabulary 300)
+  family set                  n words  sentiment  dataset   PMI (control)
+  learned                    60   300      +0.02    -0.22   0.42 (0.45)
+  ppmi, same vocabulary      69   193      +0.55    +0.78   0.70 (0.44)

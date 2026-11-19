@@ -1,0 +1,77 @@
+vocabulary 732 words, span df in [0.01, 0.5]
+pairs: train (40000, 1464), val (2000, 1464), positives 0.50
+overlap baseline (share >= 0 words): 0.5000
+structure ((0, 732), (3, 12), (0, 2)), initial vote per clause 144, T 128
+/home/coder/ict-project/.venv/lib/python3.12/site-packages/PyHierarchicalTsetlinMachineCUDA/tm.py:141: UserWarning: The CUDA compiler succeeded, but said the following:
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+
+  mod_prepare = SourceModule(parameters + kernels.code_header + kernels.code_prepare, no_extern_c=True)
+/home/coder/ict-project/.venv/lib/python3.12/site-packages/PyHierarchicalTsetlinMachineCUDA/tm.py:145: UserWarning: The CUDA compiler succeeded, but said the following:
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+
+  mod_update = SourceModule(parameters + kernels.code_header + kernels.code_update, no_extern_c=True)
+/home/coder/ict-project/.venv/lib/python3.12/site-packages/PyHierarchicalTsetlinMachineCUDA/tm.py:184: UserWarning: The CUDA compiler succeeded, but said the following:
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+
+  mod_clauses = SourceModule(parameters + kernels.code_clauses, no_extern_c=True)
+#1 val 0.5200 (5s)
+#2 val 0.5580 (5s)
+#3 val 0.5520 (5s)
+#4 val 0.5915 (5s)
+#5 val 0.6245 (5s)
+#6 val 0.6300 (5s)
+#7 val 0.6180 (5s)
+#8 val 0.6620 (5s)
+#9 val 0.6200 (5s)
+#10 val 0.6220 (5s)
+#11 val 0.6610 (5s)
+#12 val 0.6460 (5s)
+#13 val 0.6630 (5s)
+#14 val 0.6650 (5s)
+#15 val 0.6710 (5s)
+#16 val 0.6595 (5s)
+#17 val 0.6725 (5s)
+#18 val 0.6390 (5s)
+#19 val 0.6695 (5s)
+#20 val 0.6620 (5s)
+#21 val 0.6680 (5s)
+#22 val 0.6490 (5s)
+#23 val 0.6265 (5s)
+#24 val 0.6840 (5s)
+#25 val 0.6830 (5s)
+#26 val 0.6900 (5s)
+#27 val 0.6365 (5s)
+#28 val 0.6800 (5s)
+#29 val 0.6885 (5s)
+#30 val 0.6995 (5s)
+#31 val 0.6735 (5s)
+#32 val 0.6755 (5s)
+#33 val 0.6875 (5s)
+#34 val 0.6690 (5s)
+#35 val 0.6880 (5s)
+#36 val 0.6985 (5s)
+#37 val 0.6745 (5s)
+#38 val 0.6715 (5s)
+#39 val 0.6880 (5s)
+#40 val 0.6890 (5s)
+
+400 OR groups, 0.11 empty alternatives per group, 1.58 words per leaf, 58% single-word leaves
+
+Examples from positive clauses (evidence for 'belong together'):
+  [  0/A] doesn't | for & what | have & they & what | hollywood | but & all | movie & never | actors | best | her & she | act | who | watch
+  [  0/B] scenes | sure | for & story | horror | film & work | bad | on & characters | movie & plot | dead | have & out | role | cool
+  [  2/A] not & movies | action | some & still | you & see | scene | crap | alone | all & do | at & he | years | call | could
+  [  2/B] scenes | give | b | acting | oh | one & time | excellent | have & people | you & if | all & me | tv
+  [  4/A] about & more | so & almost | were & people | boy | out & would | at & least | cast | his & story | who & people | but & movie | tries | just & what
+  [  4/B] child | director | done | rating | an & their | only & which | life | work | bad | never | have & watch | coming
+  [  6/A] like & from | end | you & see | drama | goes | only | might | viewer | despite | because | saw | 10
+  [  6/B] must | whole | saying | because & watch | end | films | just & do | completely | his & new | man | course | but & not & be
+  [  8/A] short | because | wrong | even & can | acting | anything | eyes | their & its | good & plot | goes | funny | becomes
+  [  8/B] mr | would & see | boy | film & though | don't | they & little | have & into | two | fun | or & do | my & seen | early
+  [ 10/A] house | guess | given | killed | home | gets | his & him | scene | are & think | an & than | so & could | done
+  [ 10/B] not & be & so | almost | watched | perhaps | you & then | which & other | actually | at & old | out & who | many | up & where | being
+  [ 12/A] stupid | who & he | something | scene | film & give | not & are & be | country | performance | little | so & acting | his & has | point
+  [ 12/B] sorry | makes | making | movies | he & make | action | might | performance | worse | through | any | take
+  [ 14/A] up & could | world | looks | script | actually | be & good | children | rather | american | last | director | cast
+
+Wrote /home/coder/ict-project/experiments/HWF-TM/results/pretrain_same-dataset.json

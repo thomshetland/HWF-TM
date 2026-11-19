@@ -1,0 +1,29 @@
+Loading and tokenizing...
+50000 reviews per dataset: 40000 train, 10000 test
+X_train (20000, 10000), X_test (5000, 10000), positives 0.50
+structure two-leaf: ((0, 5000), (0, 2)), seed 1
+
+Accuracy over 20 epochs:
+
+#1 Train: 77.93% Accuracy: 76.24% F1: 0.7190 Training: 368.68s Testing: 24.05s
+#2 Train: 82.58% Accuracy: 80.32% F1: 0.8078 Training: 323.89s Testing: 24.01s
+#3 Train: 81.34% Accuracy: 78.92% F1: 0.7589 Training: 301.22s Testing: 24.00s
+#4 Train: 84.38% Accuracy: 80.86% F1: 0.8222 Training: 287.94s Testing: 24.03s
+#5 Train: 84.70% Accuracy: 80.76% F1: 0.8227 Training: 279.02s Testing: 24.01s
+#6 Train: 85.89% Accuracy: 80.82% F1: 0.7945 Training: 271.60s Testing: 24.33s
+#7 Train: 84.29% Accuracy: 79.92% F1: 0.7721 Training: 266.77s Testing: 24.16s
+#8 Train: 87.09% Accuracy: 81.62% F1: 0.8272 Training: 260.75s Testing: 24.11s
+#9 Train: 88.50% Accuracy: 81.80% F1: 0.8138 Training: 253.95s Testing: 24.21s
+#10 Train: 88.40% Accuracy: 81.90% F1: 0.8022 Training: 249.89s Testing: 24.53s
+#11 Train: 89.62% Accuracy: 82.48% F1: 0.8168 Training: 245.11s Testing: 24.51s
+#12 Train: 90.31% Accuracy: 81.96% F1: 0.8229 Training: 241.55s Testing: 24.20s
+#13 Train: 90.14% Accuracy: 81.84% F1: 0.8066 Training: 236.24s Testing: 24.24s
+#14 Train: 90.68% Accuracy: 81.74% F1: 0.8259 Training: 232.66s Testing: 24.54s
+#15 Train: 89.89% Accuracy: 81.84% F1: 0.8307 Training: 229.22s Testing: 24.74s
+#16 Train: 90.05% Accuracy: 80.02% F1: 0.8143 Training: 226.18s Testing: 24.97s
+#17 Train: 91.03% Accuracy: 80.70% F1: 0.8113 Training: 223.36s Testing: 24.87s
+#18 Train: 92.13% Accuracy: 81.58% F1: 0.8165 Training: 220.64s Testing: 24.58s
+#19 Train: 90.78% Accuracy: 81.24% F1: 0.8240 Training: 216.57s Testing: 24.37s
+#20 Train: 92.05% Accuracy: 81.54% F1: 0.8227 Training: 213.50s Testing: 24.38s
+
+Wrote per-epoch metrics to /home/coder/ict-project/results/htm_imdb_awz_two-leaf_seed1.csv

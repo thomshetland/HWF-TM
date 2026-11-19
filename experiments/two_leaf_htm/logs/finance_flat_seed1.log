@@ -1,0 +1,14 @@
+finance_flat_seed1: X_train (3877, 5000), X_test (969, 5000)
+structure ((0, 5000), (3, 1))
+#1 train 64.69% test 64.60% literals per clause: 0.9 words, 82.4 negated (9s)
+#2 train 67.11% test 64.19% literals per clause: 0.9 words, 81.6 negated (7s)
+#3 train 69.23% test 66.25% literals per clause: 0.9 words, 81.5 negated (7s)
+#4 train 66.29% test 64.50% literals per clause: 0.8 words, 86.1 negated (7s)
+#5 train 71.45% test 68.01% literals per clause: 0.8 words, 91.1 negated (6s)
+#6 train 71.86% test 67.80% literals per clause: 0.8 words, 89.7 negated (6s)
+#7 train 76.84% test 70.07% literals per clause: 0.8 words, 92.6 negated (6s)
+#8 train 80.76% test 69.04% literals per clause: 0.8 words, 92.2 negated (6s)
+#9 train 80.24% test 68.52% literals per clause: 0.8 words, 90.6 negated (6s)
+#10 train 78.82% test 70.59% literals per clause: 0.8 words, 92.5 negated (6s)
+
+best test accuracy 70.5882% at epoch 10; wrote /home/coder/ict-project/experiments/two_leaf_htm/results/finance_flat_seed1.csv

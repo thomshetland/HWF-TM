@@ -1,0 +1,25 @@
+# environments
+.venv/
+.venv-htm035/
+__pycache__/
+*.egg-info/
+
+# datasets: download them as described in experiments/README.md
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+
+# tool files that are not part of the project
+.ruff_cache/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# trained machines: rebuilt by each experiment's run.sh
+experiments/*/models/
+
+# the report is kept on Overleaf, and the working notes stay local
+report/
+docs/

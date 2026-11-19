@@ -1,0 +1,18 @@
+{
+  "learned": {
+    "families": 18,
+    "sentiment_coherence": 0.11742710090626718,
+    "dataset_coherence": 0.2657213537033999,
+    "pmi": 0.40175753831863403,
+    "pmi_control": 0.3918804883956909,
+    "words": 95
+  },
+  "ppmi, same vocabulary": {
+    "families": 20,
+    "sentiment_coherence": 0.6701145265418176,
+    "dataset_coherence": 0.783100467495201,
+    "pmi": 0.5780009031295776,
+    "pmi_control": 0.3704400360584259,
+    "words": 57
+  }
+}

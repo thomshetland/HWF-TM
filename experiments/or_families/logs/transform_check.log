@@ -1,0 +1,6 @@
+{
+  "or_transform_equals_leaf_readout": true,
+  "root_vote_equals_product_of_or_outputs": true,
+  "examples": 300,
+  "mean_firing_alternatives_per_group": 0.3166583478450775
+}

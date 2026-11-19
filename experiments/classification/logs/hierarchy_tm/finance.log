@@ -1,0 +1,17 @@
+Loading and tokenizing...
+X_train (3877, 5000), X_test (969, 5000)
+
+Accuracy over 10 epochs:
+
+#1 Train: 62.78% Accuracy: 62.33% Training: 81.34s Testing: 23.79s
+#2 Train: 64.48% Accuracy: 63.26% Training: 86.69s Testing: 22.20s
+#3 Train: 68.76% Accuracy: 67.18% Training: 61.63s Testing: 8.00s
+#4 Train: 72.84% Accuracy: 69.35% Training: 33.71s Testing: 9.46s
+#5 Train: 73.33% Accuracy: 68.21% Training: 15.90s Testing: 3.78s
+#6 Train: 69.36% Accuracy: 67.08% Training: 16.85s Testing: 5.91s
+#7 Train: 71.99% Accuracy: 68.21% Training: 36.00s Testing: 10.39s
+#8 Train: 76.86% Accuracy: 69.45% Training: 32.56s Testing: 11.31s
+#9 Train: 70.83% Accuracy: 67.08% Training: 29.84s Testing: 13.37s
+#10 Train: 77.79% Accuracy: 70.38% Training: 32.53s Testing: 8.37s
+
+Wrote per-epoch metrics to /home/coder/ict-project/experiments/classification/hierarchy_tm/finance.csv
