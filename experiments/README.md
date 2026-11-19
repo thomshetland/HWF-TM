@@ -31,7 +31,7 @@ Code that several experiments use is in [../src/](../src/), and the datasets are
 ## Reproducing the results
 
 Run an experiment with its `run.sh`. A full run takes hours and overwrites the stored results.
-`plot_all.sh` in this folder only redraws the figures and the generated part of Appendix B from the
+`plot_all.sh` in this folder only redraws the figures from the
 stored results.
 
 - **Hardware.** Every standard TM runs on one CPU thread of an Intel Xeon Platinum 8168. Every HTM
