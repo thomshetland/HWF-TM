@@ -49,7 +49,6 @@ export_families.py   stage 2: the family lists of all sources in one format
 classify.py          stage 3: the TM on every input, with accuracy and clause statistics per epoch
 run.sh               all runs
 results/             pretrain_*.json, families_*.json, classify_*.csv, clauses_*/
-models/              the two pretrained HTMs, reloaded by pretrain.py instead of retrained
 ```
 
 In `classify_*.csv`, `bow` is the set of words and `<source>-perm` the random control of a family

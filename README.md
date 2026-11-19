@@ -18,14 +18,12 @@ scarce. The encoding is therefore not the limitation; learning good families wit
 experiments/   one folder per experiment, all with the same layout; start with experiments/README.md
 src/           code shared by the experiments
 data/          the datasets, which are downloaded separately
-report/        the chapters of the report
-docs/          background on the TM and the HTM, and the logs of what was tried along the way
 ```
 
 ## Getting started
 
-Create the environment with the exact versions. This needs a GPU and `nvcc`, see
-[docs/07-environment.md](docs/07-environment.md):
+Create the environment with the exact versions. This needs a GPU and `nvcc`, because pycuda is
+built from source:
 
 ```bash
 uv venv --python 3.12 .venv

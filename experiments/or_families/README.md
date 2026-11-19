@@ -51,9 +51,8 @@ its control. The claims about the dataset axis rest on the slot means above.
 ## Result 2: beyond a handful of families, no single group is a family
 
 `planted.py` trains the two-slot HTM on synthetic families of six words. Each pair holds one word
-per slot, and Y = 1 when both words come from the same family. That is the task of the early
-probes (X2 and X7 in `docs/findings-early-probes.md`). After 60 epochs at 16 clauses per family
-and T = 8, two things are measured:
+per slot, and Y = 1 when both words come from the same family. After 60 epochs at 16 clauses per
+family and T = 8, two things are measured:
 - **Accuracy:** final validation accuracy.
 - **Groups:** planted families held cleanly by one positive clause, in both slots. That needs at
   least three of the family's six words, 80 % purity and no empty alternative.
@@ -70,13 +69,11 @@ and T = 8, two things are measured:
 | 32 | 1000 | 0.824 | 0 of 32 | 0.06 |
 
 The fall to chance at 32 families is a setting, not a capacity limit. At s = 400 the machine
-reaches 0.75, and at s = 1000 it reaches 0.82, because fewer alternatives empty (an external
-audit of the project found this first). But above eight families no positive group holds a
+reaches 0.75, and at s = 1000 it reaches 0.82, because fewer alternatives empty. But above eight families no positive group holds a
 family, although the groups are hardly ever empty. A positive group then mixes words from
 several families, and the machine classifies by summing many such overlapping unions. A
 read-out that takes one group as one family cannot find the families there. Every row has one
-seed. The audit's second seed at 32 families gave 0.49 at s = 100 and 0.63 at s = 400, so the
-level varies between seeds.
+seed, so the level at a given s can differ with another seed.
 
 The same script measures two more things:
 - **s.** On eight families s = 100 gives 0.88 and s = 30 gives 0.74.
@@ -87,9 +84,8 @@ The same script measures two more things:
 
 ## What this says about the HWF-TM
 
-The OR mechanism is not the problem. Trained on the sentiment label itself, an HTM with an OR level
-learns families such as `great | wonderful | perfect` at 99.5 % polarity purity (X11 in
-`docs/findings-early-probes.md`). Our families fail for three reasons:
+The OR mechanism is not the problem. On planted data the two-slot HTM learns up to eight families
+as clean OR groups (Result 2). Our families fail for three reasons:
 
 1. **The pretext label.** An OR group is an equivalence class of the pretext label. "Same dataset"
    makes every IMDB word equivalent, and a task that exact overlap can largely solve gives little

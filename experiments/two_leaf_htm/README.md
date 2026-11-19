@@ -68,8 +68,8 @@ and is back at 70.38 at epoch 10. With one seed, a difference below one point is
 classify.py       one run: --dataset imdb|amazon|finance, --structure flat|two-leaf
 run.sh            all six runs
 results/          per-epoch accuracy and literals per clause, one CSV per run
-models/           the machine after its last finished epoch, one checkpoint per run
 ```
 
-A run checkpoints after every epoch. Running the same command again resumes it, and a finished
-run is only reported again. Delete its file in `models/` to train from scratch.
+A run saves a checkpoint after every epoch, in a `models/` folder that it creates. Running the
+same command again resumes it, and a finished run is only reported again. Delete the checkpoint
+to train from scratch.

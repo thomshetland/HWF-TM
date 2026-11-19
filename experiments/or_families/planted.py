@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """The two-slot HTM on planted word families: which library options and settings let it train?
 
-The pair task of the early probes (X2, X7 in docs/findings-early-probes.md), on synthetic words:
+A pair task on synthetic words:
 n_sets families of six words, one word per slot, Y = 1 when both words come from the same
 family. The rule to find is one clause per family, (family)(A) AND (family)(B). Every
 configuration is trained with the same seed, and the result is the validation accuracy.
@@ -33,7 +33,7 @@ import numpy as np
 import PyHierarchicalTsetlinMachineCUDA.tm as htm
 
 HERE = Path(__file__).resolve().parent
-SIZE, M = 6, 12  # words per family; alternatives, about twice the family size (X2)
+SIZE, M = 6, 12  # words per family; alternatives, about twice the family size
 
 CONFIGS = [
     # (sweep, families, clauses per family, T, s, literal_budget, binary_inference, epochs)

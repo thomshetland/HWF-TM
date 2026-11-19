@@ -20,7 +20,6 @@ other, in this order:
   run.sh         the exact commands behind the stored results
   *.py           the code; tm/ and hierarchy_tm/ when one script exists per machine
   results/       the CSV and JSON files behind the report's numbers
-  models/        trained machines, if the experiment keeps any
 ```
 
 Code that several experiments use is in [../src/](../src/), and the datasets are described in

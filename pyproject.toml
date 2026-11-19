@@ -5,7 +5,7 @@ description = "Logical self-supervised learning of language with hierarchical Ts
 readme = "README.md"
 requires-python = ">=3.12"
 # Exact versions: k-means and the Tsetlin machines depend on them.
-# pycuda must be built from source against this NumPy; see docs/07-environment.md.
+# pycuda must be built from source against this NumPy.
 dependencies = [
     "numpy==2.5.3",
     "scipy==1.18.1",
