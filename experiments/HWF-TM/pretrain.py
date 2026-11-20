@@ -4,7 +4,7 @@
 No sentiment label is used. Two spans A and B are shown together and the machine predicts whether
 they belong together. There are two pretext tasks:
 
-  --task dataset   two half-reviews, Y=1 if both come from the same corpus
+  --task dataset   two reviews, Y=1 if both come from the same corpus
                    (common.sample_dataset_pairs).
   --task profile   two usage profiles of words, Y=1 if both describe the same word
                    (common.sample_profile_pairs).
@@ -29,7 +29,7 @@ The defaults are the same-dataset recipe, with shared words removed. Each choice
   append_negated=False    a family means "any of these words"; NOT(word) is true on almost every
                           sparse text and would make a family bit constant.
   min/max df 1 % / 50 %   rare words become dead literals, very common ones ride along in every
-                          alternative (common.span_vocabulary).
+                          alternative (common.pretext_vocabulary).
 
 Writes results/pretrain_<name>.json with the config, the per-epoch history, the overlap baseline
 and every OR group. Run from the repo root (see run.sh for both pretexts):
@@ -56,10 +56,10 @@ from src.common import (  # noqa: E402
     load_splits,
     overlap_baseline,
     pair_matrix,
+    pretext_vocabulary,
     remove_shared,
     sample_dataset_pairs,
     sample_profile_pairs,
-    span_vocabulary,
     tokens,
 )
 
@@ -72,8 +72,8 @@ parser.add_argument("--task", choices=("dataset", "profile"), default="dataset")
 parser.add_argument("--remove-shared", action=argparse.BooleanOptionalAction, default=True)
 parser.add_argument("--mirror", action=argparse.BooleanOptionalAction, default=True)
 parser.add_argument("--vocabulary", type=int, default=5000, help="cap after the df filter")
-parser.add_argument("--min-df", type=float, default=0.01, help="share of spans a word must reach")
-parser.add_argument("--max-df", type=float, default=0.5, help="share of spans a word may reach")
+parser.add_argument("--min-df", type=float, default=0.01, help="share of reviews a word must reach")
+parser.add_argument("--max-df", type=float, default=0.5, help="share of reviews a word may reach")
 parser.add_argument("--sample", type=int, default=100, help="profile: occurrences per profile")
 parser.add_argument("--min-count", type=int, default=3, help="profile: word threshold")
 parser.add_argument("--window", type=int, default=5, help="profile: context words per side")
@@ -110,7 +110,7 @@ for name in PRETRAIN_DATASETS:
     n_val = len(reviews) // 10
     val_pool[name], pool[name] = reviews[:n_val], reviews[n_val:]
 
-vocabulary = span_vocabulary(
+vocabulary = pretext_vocabulary(
     [r for name in pool for r in pool[name]], args.vocabulary, args.min_df, args.max_df
 )
 if saved:
@@ -118,7 +118,7 @@ if saved:
     vocabulary = {word: i for i, word in enumerate(saved["words"])}
 words = sorted(vocabulary, key=vocabulary.get)
 V = len(vocabulary)
-print(f"vocabulary {V} words, span df in [{args.min_df}, {args.max_df}]")
+print(f"vocabulary {V} words, review df in [{args.min_df}, {args.max_df}]")
 
 if args.task == "profile":
     train_pairs = sample_profile_pairs(

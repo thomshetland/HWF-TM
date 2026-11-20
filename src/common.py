@@ -5,8 +5,8 @@ set-of-words numbers of every experiment are directly comparable to that benchma
 
   IMDB      80/20 split of the 50 000 reviews.
   Amazon    40 000 reviews sampled from train.csv, 10 000 from test.csv.
-  Finance   80/20 split of the 4846 sentences. Never used for pretraining: it has no long
-            documents to cut into halves, and keeping it out makes it the out-of-domain test.
+  Finance   80/20 split of the 4846 sentences. Never used for pretraining: keeping it out makes
+            it the out-of-domain test.
 
 Pretraining sees IMDB and Amazon *train* texts only, with the sentiment labels thrown away, so
 the downstream test texts are never seen before evaluation.
@@ -34,7 +34,7 @@ SPLITS_PATH = ROOT / "data" / "processed" / f"splits_seed{DATA_SEED}.pkl"
 DATASETS = ("imdb", "amazon", "finance")
 PRETRAIN_DATASETS = ("imdb", "amazon")
 VOCABULARY_SIZE = 5000  # the downstream vocabulary of the benchmark
-MIN_TOKENS = 10  # a review needs at least five words per half to make a pair
+MIN_TOKENS = 10  # shorter reviews leave a side almost empty once the shared words are deleted
 
 
 def load_splits():
@@ -98,46 +98,38 @@ def bag_of_words(token_lists, vocabulary, dtype=np.uint32):
 # ---------------------------------------------------------------- pretext pairs
 
 
-def halves(row):
-    words = tokens(row)
-    mid = len(words) // 2
-    return words[:mid], words[mid:]
-
-
-def span_vocabulary(rows, size, min_df, max_df):
-    """The `size` most frequent words among those in [min_df, max_df] of the half-review spans.
+def pretext_vocabulary(rows, size, min_df, max_df):
+    """The `size` most frequent words among those that occur in [min_df, max_df] of the reviews.
 
     Both bounds exist for the OR groups. A word that is almost never present becomes a dead
     literal: Type II includes every false literal of a firing leaf, and only slow Type Ib decay
-    removes it again. A word present in most spans is dragged into every alternative by Type Ia,
+    removes it again. A word present in most reviews is dragged into every alternative by Type Ia,
     so families read "film & was" instead of "film". Indices stay in document-frequency order,
     which the permuted control relies on.
     """
-    spans = [half for row in rows for half in halves(row)]
     frequency = Counter()
-    for span in spans:
+    for row in rows:
         # In text order, not a set(): most_common breaks ties by first occurrence.
-        frequency.update(dict.fromkeys(span, 1))
-    lo, hi = min_df * len(spans), max_df * len(spans)
+        frequency.update(dict.fromkeys(tokens(row), 1))
+    lo, hi = min_df * len(rows), max_df * len(rows)
     words = [w for w, n in frequency.most_common() if lo <= n <= hi][:size]
     return {word: i for i, word in enumerate(words)}
 
 
 def sample_dataset_pairs(reviews_by_dataset, n_pairs, rng):
-    """Half-review pairs (A, B, Y) for the same-dataset pretext.
+    """Review pairs (A, B, Y) for the same-dataset pretext.
 
-    Y=1 if both halves come from the same corpus (IMDB or Amazon); the four (corpus, corpus) cells
-    are drawn equally often. Which half of a review is used is random, so neither slot of the
-    hierarchy is tied to a side.
+    A and B are two reviews drawn at random. Y=1 if both come from the same corpus (IMDB or
+    Amazon); the four (corpus, corpus) cells are drawn equally often.
     """
     datasets = list(reviews_by_dataset)
     cells = [(a, b) for a in datasets for b in datasets]
     pairs = []
     for i in range(n_pairs):
         a, b = cells[i % len(cells)]
-        first = halves(reviews_by_dataset[a][rng.integers(len(reviews_by_dataset[a]))])
-        second = halves(reviews_by_dataset[b][rng.integers(len(reviews_by_dataset[b]))])
-        pairs.append((first[rng.integers(2)], second[rng.integers(2)], int(a == b)))
+        first = reviews_by_dataset[a][rng.integers(len(reviews_by_dataset[a]))]
+        second = reviews_by_dataset[b][rng.integers(len(reviews_by_dataset[b]))]
+        pairs.append((tokens(first), tokens(second), int(a == b)))
     return [pairs[i] for i in rng.permutation(n_pairs)]
 
 

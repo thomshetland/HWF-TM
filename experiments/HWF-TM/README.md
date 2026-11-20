@@ -11,7 +11,7 @@ learns, not in how they are given to the TM.
 Stage 1, no labels (pretrain.py, GPU):
   a pair of spans -> HTM with clauses (OR group over A) AND (OR group over B) -> belong together?
 
-  same-dataset pretext: two half-reviews, from the same corpus?   m = 12, 200 clauses,  T = 128
+  same-dataset pretext: two reviews, from the same corpus?        m = 12, 200 clauses,  T = 128
   profile pretext:      two usage profiles, of the same word?     m = 8,  2000 clauses, T = 256
 
 Stage 2, no labels (export_families.py):
@@ -25,6 +25,10 @@ The HTM is not used for classification. A family fires when any of its words occ
 the bits of its words.
 
 ## Result
+
+> **Being rerun.** The pretext tasks now use whole reviews and a vocabulary counted over whole
+> reviews. The numbers in this section are from the earlier runs and will be replaced when
+> `run.sh` has been run again.
 
 Test accuracy and literals per clause with all labels and 2000 clauses. The inputs named "HWF-TM" are
 below the TM on IMDB and Amazon, and their families are no better than random groups of equally

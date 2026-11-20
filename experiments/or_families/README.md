@@ -16,6 +16,10 @@ label, whatever that label is.
 
 ## Result 1: the stored groups are evidence for the pretext label, not families
 
+> **Being rerun.** The pretext tasks now use whole reviews and a vocabulary counted over whole
+> reviews. The numbers in this section are from the earlier runs and will be replaced when
+> `../HWF-TM/run.sh` and this folder's `run.sh` have been run again.
+
 `diagnose.py` reads both pretraining runs of the HWF-TM.
 
 | Pretext | Positive clauses | Negative clauses | Slots A and B share words |
