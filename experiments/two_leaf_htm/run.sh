@@ -8,10 +8,8 @@ cd "$(dirname "$0")/../.."
 PY=./.venv/bin/python
 HERE=experiments/two_leaf_htm
 
-mkdir -p $HERE/logs
 for dataset in imdb amazon finance; do
     for structure in flat two-leaf; do
-        $PY $HERE/classify.py --dataset $dataset --structure $structure --seed 1 \
-            2>&1 | tee -a $HERE/logs/${dataset}_${structure}_seed1.log
+        $PY $HERE/classify.py --dataset $dataset --structure $structure --seed 1
     done
 done

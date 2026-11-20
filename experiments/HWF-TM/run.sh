@@ -17,8 +17,10 @@ $PY $HERE/export_families.py
 
 # Stage 3: the standard TM on every input, with each random control (CPU).
 $PY $HERE/classify.py --pretrain same-dataset --name same-dataset_full --workers 5
+# The TM baseline with all labels is the bow input of same-dataset_full above.
 $PY $HERE/classify.py --families profile ppmi --name sources_full --labels 0 --epochs 10 \
-    --seeds 1 --clauses 2000 --workers 5
+    --seeds 1 --clauses 2000 --workers 5 \
+    --representations profile profile-perm ppmi ppmi-perm
 $PY $HERE/classify.py --families same-dataset profile ppmi --name sources_N1000 --labels 1000 \
     --epochs 20 --seeds 3 --clauses 250 500 1000 2000 --workers 5
 $PY $HERE/classify.py --families same-dataset profile ppmi --name sources_N200 --labels 200 \

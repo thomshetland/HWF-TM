@@ -8,17 +8,15 @@ PY=./.venv/bin/python               # library 0.3.1, as every stored HTM result
 PY035=./.venv-htm035/bin/python     # library 0.3.5, for its new options (README.md)
 HERE=experiments/or_families
 
-mkdir -p $HERE/logs
-
 # 1. Diagnosis of the stored HWF-TM pretraining runs (CPU).
-$PY $HERE/diagnose.py | tee $HERE/logs/diagnose.log
+$PY $HERE/diagnose.py
 
 # 2. An OR-level transform equals the leaf read-out; library 0.3.5 with its new options off
 #    trains bit-identically to 0.3.1.
-$PY $HERE/transform_check.py | tee $HERE/logs/transform_check.log
+$PY $HERE/transform_check.py
 $PY $HERE/version_check.py
 $PY035 $HERE/version_check.py
 
 # 3. Planted families: which options and settings let the two-slot HTM train at all, and
 #    whether its families can be read out group by group.
-$PY035 $HERE/planted.py | tee $HERE/logs/planted.log
+$PY035 $HERE/planted.py
