@@ -9,7 +9,9 @@ HERE=experiments/HWF-TM
 
 # Stage 1: pretrain an HTM on each pretext (GPU).
 $PY $HERE/pretrain.py --name same-dataset
-$PY $HERE/pretrain.py --name profile --task profile --no-remove-shared --max-df 0.1 \
+# The profile vocabulary is the words in 2 % to 18 % of the reviews. With 1 % to 10 % it holds
+# rarer words (1154 instead of 635), and the pretext then reaches 0.70 instead of 0.79.
+$PY $HERE/pretrain.py --name profile --task profile --no-remove-shared --min-df 0.02 --max-df 0.18 \
     --alternatives 8 --clauses 2000 --T 256 --epochs 60 --train-pairs 60000
 
 # Stage 2: read the OR groups out as word families, next to the PPMI families.
