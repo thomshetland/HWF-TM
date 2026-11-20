@@ -26,10 +26,6 @@ the bits of its words.
 
 ## Result
 
-> **Being rerun.** The pretext tasks now use whole reviews and a vocabulary counted over whole
-> reviews. The numbers in this section are from the earlier runs and will be replaced when
-> `run.sh` has been run again.
-
 Test accuracy and literals per clause with all labels and 2000 clauses. The inputs named "HWF-TM" are
 below the TM on IMDB and Amazon, and their families are no better than random groups of equally
 frequent words.
@@ -38,11 +34,16 @@ frequent words.
 | --- | --- | --- | --- |
 | TM | 87.06 / 137 | 82.11 / 135 | 70.28 / 88 |
 | PPMI-TM | 84.31 / 106 | 80.06 / 174 | 70.28 / 89 |
-| HWF-TM, profile | 85.56 / 180 | 81.27 / 180 | 69.97 / 95 |
-| HWF-TM, same-dataset | 83.76 / 120 | 77.58 / 170 | 70.69 / 98 |
+| HWF-TM, profile | 85.22 / 183 | 81.24 / 172 | 70.38 / 96 |
+| HWF-TM, same-dataset | 83.94 / 188 | 77.39 / 154 | 71.10 / 89 |
+
+The random controls reach 85.53, 81.10 and 72.14 for the profile families, and 84.29, 79.26 and
+72.24 for the same-dataset families.
 
 With 1000 labels the PPMI-TM is the most accurate, and 250 of its clauses match a TM with 1000 to 2000
-clauses on IMDB. Appendix B has every run, including the random controls.
+clauses on IMDB. The same-dataset families are 4 % to 5 % below the TM on IMDB and Amazon there, and
+1 % to 2 % below their control. The profile families are 1 % to 2 % below the TM and level with
+their control. `results/` has every run, including the random controls.
 
 ## Layout
 

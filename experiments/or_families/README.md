@@ -16,22 +16,18 @@ label, whatever that label is.
 
 ## Result 1: the stored groups are evidence for the pretext label, not families
 
-> **Being rerun.** The pretext tasks now use whole reviews and a vocabulary counted over whole
-> reviews. The numbers in this section are from the earlier runs and will be replaced when
-> `../HWF-TM/run.sh` and this folder's `run.sh` have been run again.
-
 `diagnose.py` reads both pretraining runs of the HWF-TM.
 
 | Pretext | Positive clauses | Negative clauses | Slots A and B share words |
 | --- | --- | --- | --- |
-| Same dataset | 100 of 100 are "IMDB word in A and IMDB word in B" | 89 % contrast the slots (film words against `book`, `buy`, `price`) | 0.03 (Jaccard) |
-| Profile | lean like the vocabulary | lean like the vocabulary | 0.36 in positive clauses, 0.00 in negative ones |
+| Same dataset | in 100 of 100, both slots lean towards IMDB | 90 % contrast the slots (`movie`, `film` against `book`, `bought`, `product`) | 0.02 (Jaccard) |
+| Profile | lean like the vocabulary | lean like the vocabulary | 0.38 in positive clauses, 0.00 in negative ones |
 
 - **Same dataset.** A positive group means "some IMDB word". No clause recognises two Amazon
-  texts. 42 % of the leaves are conjunctions such as `movie & has`, a group has 0.5 duplicate
-  leaves on average, and the members are frequent words: the median rank is 39 of 732.
+  texts. 46 % of the leaves are conjunctions such as `book & read`, a group has 0.5 duplicate
+  leaves on average, and the members are frequent words: the median rank is 45 of 1282.
 - **Profile.** The pretext is solved by the same word on both sides: the overlap baseline is
-  0.849, and the HTM reaches 0.83. A positive clause `(a|b|c)(A) AND (a|b|c)(B)` is a bundle of
+  0.823, and the HTM reaches 0.81. A positive clause `(a|b|c)(A) AND (a|b|c)(B)` is a bundle of
   such matchers, so the members of one group need have nothing in common.
 
 The coherence of the groups is measured against 20 frequency-matched permutations. 0 means no more
@@ -39,10 +35,10 @@ alike than random words of the same frequency.
 
 | Family set | Families | Sentiment coherence | Document PMI (control) |
 | --- | --- | --- | --- |
-| Same dataset, positive groups | 200 | -0.17 | 0.59 (0.45) |
-| Same dataset, families used downstream | 137 | +0.09 | 0.50 (0.45) |
-| Profile, positive groups | 1716 | +0.03 | 0.56 (0.49) |
-| Profile, families used downstream | 112 | -0.00 | 0.63 (0.47) |
+| Same dataset, positive groups | 200 | +0.05 | 0.65 (0.48) |
+| Same dataset, families used downstream | 171 | +0.00 | 0.52 (0.48) |
+| Profile, positive groups | 1670 | +0.07 | 0.56 (0.49) |
+| Profile, families used downstream | 105 | -0.11 | 0.59 (0.47) |
 | **PPMI, families used downstream** | 866 | **+0.66** | **1.71 (0.36)** |
 
 No HTM family set is more alike in sentiment than random words. The PPMI families are, because

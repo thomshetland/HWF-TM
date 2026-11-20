@@ -1,0 +1,117 @@
+{
+  "same-dataset": {
+    "pretext_accuracy": 0.7725,
+    "overlap_baseline": 0.5,
+    "clause_structure": {
+      "positive": {
+        "clauses": 100,
+        "slot_A_dataset_lean": 1.361931324005127,
+        "slot_B_dataset_lean": 1.3798478841781616,
+        "slots_lean_opposite": 0.0,
+        "slot_jaccard": 0.020778791640194014
+      },
+      "negative": {
+        "clauses": 100,
+        "slot_A_dataset_lean": 0.2919042706489563,
+        "slot_B_dataset_lean": 0.21408231556415558,
+        "slots_lean_opposite": 0.9,
+        "slot_jaccard": 0.02732009764199125
+      }
+    },
+    "leaf_structure": {
+      "leaves": 4748,
+      "single_word_leaves": 0.5377000842459984,
+      "words_per_leaf": 1.7270429654591406,
+      "duplicate_leaves_per_group": 0.46,
+      "empty_leaves_per_group": 0.13,
+      "median_member_rank": 45.0,
+      "vocabulary": 1282
+    },
+    "coherence": {
+      "positive groups": {
+        "families": 200,
+        "sentiment_coherence": 0.05171238809657386,
+        "dataset_coherence": 0.29424158396709177,
+        "pmi": 0.6462792754173279,
+        "pmi_control": 0.482990038394928
+      },
+      "negative groups": {
+        "families": 105,
+        "sentiment_coherence": 0.33636892916007055,
+        "dataset_coherence": -1.6330586247832026,
+        "pmi": 0.06436967104673386,
+        "pmi_control": 0.42436071038246154
+      },
+      "families used downstream": {
+        "families": 171,
+        "sentiment_coherence": 0.0017707040053231982,
+        "dataset_coherence": 0.2017932137336078,
+        "pmi": 0.5235186219215393,
+        "pmi_control": 0.4820745408535004
+      }
+    }
+  },
+  "profile": {
+    "pretext_accuracy": 0.8135,
+    "overlap_baseline": 0.8225,
+    "clause_structure": {
+      "positive": {
+        "clauses": 1000,
+        "slot_A_dataset_lean": 1.148532748222351,
+        "slot_B_dataset_lean": 1.145301342010498,
+        "slots_lean_opposite": 0.007,
+        "slot_jaccard": 0.380030228040793
+      },
+      "negative": {
+        "clauses": 1000,
+        "slot_A_dataset_lean": 1.0873677730560303,
+        "slot_B_dataset_lean": 1.0734782218933105,
+        "slots_lean_opposite": 0.003,
+        "slot_jaccard": 0.003721565126293219
+      }
+    },
+    "leaf_structure": {
+      "leaves": 31269,
+      "single_word_leaves": 0.6642361444241901,
+      "words_per_leaf": 1.3833509226390355,
+      "duplicate_leaves_per_group": 0.99825,
+      "empty_leaves_per_group": 0.18275,
+      "median_member_rank": 72.0,
+      "vocabulary": 635
+    },
+    "coherence": {
+      "positive groups": {
+        "families": 1670,
+        "sentiment_coherence": 0.07471752636247853,
+        "dataset_coherence": 0.156149303188025,
+        "pmi": 0.5615711808204651,
+        "pmi_control": 0.4855761229991913
+      },
+      "negative groups": {
+        "families": 1899,
+        "sentiment_coherence": -0.24859328848845186,
+        "dataset_coherence": -0.5427196076469485,
+        "pmi": 0.42520466446876526,
+        "pmi_control": 0.46284945011138917
+      },
+      "families used downstream": {
+        "families": 105,
+        "sentiment_coherence": -0.10674661551615183,
+        "dataset_coherence": 0.22860597819847772,
+        "pmi": 0.5911975502967834,
+        "pmi_control": 0.4687665283679962
+      }
+    }
+  },
+  "ppmi": {
+    "coherence": {
+      "families used downstream": {
+        "families": 866,
+        "sentiment_coherence": 0.6598541957808779,
+        "dataset_coherence": 0.7599535774712797,
+        "pmi": 1.7066956758499146,
+        "pmi_control": 0.3587435781955719
+      }
+    }
+  }
+}
