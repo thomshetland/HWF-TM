@@ -36,8 +36,8 @@ rng = np.random.default_rng(SEED)
 # tokenize documents
 
 print("Loading and tokenizing...")
-imdb = tokenize_document(load_imdb(), save_document=False)
-amazon = tokenize_document(load_amazon(len(imdb), rng), save_document=False)
+imdb = tokenize_document(load_imdb())
+amazon = tokenize_document(load_amazon(len(imdb), rng))
 
 # Shuffle, then split reviews into train/test BEFORE pairing, so no review appears in both.
 imdb = [imdb[i] for i in rng.permutation(len(imdb))]

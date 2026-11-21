@@ -215,38 +215,10 @@ with mp.get_context("fork").Pool(args.workers) as pool, out.open("a", newline=""
                 writer.writeheader()
         writer.writerow(row)
         fh.flush()
-        rows.append(row)
         print(
             f"  {row['dataset']:8s} N={row['n_labels']:5d} seed {row['seed']} "
             f"{row['condition']:10s} TM {row['tm_accuracy']:.4f} LR {row['lr_accuracy']:.4f}",
             flush=True,
         )
 
-print(f"\nWrote {out}\n")
-print("Mean test accuracy over seeds (TM / LR); delta is against bow:\n")
-for dataset in args.datasets:
-    majority = np.bincount(DATA[dataset]["Y_test"]).max() / len(DATA[dataset]["Y_test"])
-    print(f"{dataset} (majority class {majority:.3f})")
-    for n_labels in sorted({r["n_labels"] for r in rows if r["dataset"] == dataset}):
-        cells = {}
-        present = {r["condition"] for r in rows if r["dataset"] == dataset}
-        for condition in (c for c in CONDITIONS if c in present):
-            group = [
-                r
-                for r in rows
-                if r["dataset"] == dataset
-                and r["n_labels"] == n_labels
-                and r["condition"] == condition
-            ]
-            cells[condition] = (
-                np.mean([r["tm_accuracy"] for r in group]),
-                np.std([r["tm_accuracy"] for r in group]),
-                np.mean([r["lr_accuracy"] for r in group]),
-            )
-        base_tm, _, base_lr = cells.get("bow", (np.nan, 0, np.nan))
-        line = f"  N={n_labels:5d}"
-        for condition, (tm_acc, tm_std, lr_acc) in cells.items():
-            line += f"  {condition} {tm_acc:.3f}±{tm_std:.3f}/{lr_acc:.3f}"
-            if condition != "bow" and "bow" in cells:
-                line += f" ({tm_acc - base_tm:+.3f}/{lr_acc - base_lr:+.3f})"
-        print(line)
+print(f"\nWrote {out}")

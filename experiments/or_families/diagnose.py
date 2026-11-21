@@ -132,30 +132,4 @@ out = HERE / "results" / "diagnosis.json"
 out.parent.mkdir(exist_ok=True)
 out.write_text(json.dumps(result, indent=2))
 
-for name in PRETEXTS:
-    r = result[name]
-    print(
-        f"\n{name}: pretext {r['pretext_accuracy']:.3f}, overlap baseline "
-        f"{r['overlap_baseline']:.3f}"
-    )
-    for label, s in r["clause_structure"].items():
-        print(
-            f"  {label} clauses {s['clauses']:>4}: dataset lean A {s['slot_A_dataset_lean']:+.2f} "
-            f"B {s['slot_B_dataset_lean']:+.2f}, opposite in {s['slots_lean_opposite']:.0%}, "
-            f"A/B word Jaccard {s['slot_jaccard']:.2f}"
-        )
-    s = r["leaf_structure"]
-    print(
-        f"  leaves: {s['single_word_leaves']:.0%} single words, {s['words_per_leaf']:.2f} words, "
-        f"{s['duplicate_leaves_per_group']:.2f} duplicates and {s['empty_leaves_per_group']:.2f} "
-        f"empties per group, median member rank {s['median_member_rank']:.0f} of {s['vocabulary']}"
-    )
-
-print(f"\n{'family set':<40} {'n':>5}  sentiment  dataset   PMI (control)")
-for name, r in result.items():
-    for label, c in r["coherence"].items():
-        print(
-            f"{name + ', ' + label:<40} {c['families']:>5}  {c['sentiment_coherence']:+9.2f}  "
-            f"{c['dataset_coherence']:+7.2f}   {c['pmi']:.2f} ({c['pmi_control']:.2f})"
-        )
-print(f"\nwrote {out}")
+print(f"wrote {out}")

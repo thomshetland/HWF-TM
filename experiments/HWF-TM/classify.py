@@ -28,7 +28,6 @@ not fixed; --seeds repeats every job. Keep --workers at 4 or below while a GPU j
 container has a 6-CPU quota). Run from the repo root, after pretrain.py:
 
   ./.venv/bin/python experiments/HWF-TM/classify.py --pretrain same-dataset
-  ./.venv/bin/python experiments/HWF-TM/classify.py --pretrain same-dataset --summary-only
   ./.venv/bin/python experiments/HWF-TM/classify.py --families profile ppmi --name sources_full
 """
 
@@ -38,7 +37,6 @@ import fcntl
 import json
 import multiprocessing as mp
 import sys
-from collections import defaultdict
 from pathlib import Path
 from time import time
 
@@ -95,13 +93,9 @@ parser.add_argument("--epochs", type=int, default=10)
 # 0 means every training label, the point comparable to experiments/classification/tm.
 parser.add_argument("--labels", type=int, nargs="+", default=[0])
 parser.add_argument("--seeds", type=int, default=1, help="repeats of every job")
-parser.add_argument("--polarity", choices=("all", "positive", "negative"), default="all")
-parser.add_argument("--overlap", choices=("partition", "keep"), default="partition")
-parser.add_argument("--min-family-size", type=int, default=2)
 parser.add_argument("--family-max-df", type=float, default=0.95)
 parser.add_argument("--workers", type=int, default=4)
 parser.add_argument("--show-clauses", type=int, default=5, help="top clauses per class to write")
-parser.add_argument("--summary-only", action="store_true")
 args = parser.parse_args()
 if args.families and args.pretrain:
     parser.error("give --pretrain or --families, not both")
@@ -139,40 +133,6 @@ def finished_jobs():
     return done
 
 
-def summarize():
-    """Final-epoch test accuracy and literals per clause, mean over seeds, per dataset and size."""
-    if not CSV_PATH.exists():
-        print(f"no results in {CSV_PATH}")
-        return
-    with CSV_PATH.open() as fh:
-        rows = [r for r in csv.DictReader(fh) if int(r["epoch"]) == args.epochs]
-    cells = defaultdict(list)
-    for r in rows:
-        cells[(r["dataset"], r["labels"], int(r["clauses"]), r["representation"])].append(r)
-    representations = list(dict.fromkeys(r["representation"] for r in rows))
-    print(f"\nFinal epoch ({args.epochs}), mean over seeds: test accuracy % / literals per clause")
-    print(
-        f"{'dataset':8s} {'labels':>6s} {'clauses':>7s}"
-        + "".join(f"{r:>18s}" for r in representations)
-    )
-    for dataset, labels, clauses in sorted({k[:3] for k in cells}):
-        line = f"{dataset:8s} {labels:>6s} {clauses:7d}"
-        for rep in representations:
-            group = cells.get((dataset, labels, clauses, rep))
-            if group:
-                acc = np.mean([float(r["test_accuracy"]) for r in group])
-                lits = np.mean([float(r["literals_per_clause"]) for r in group])
-                line += f"{acc:9.2f} / {lits:5.1f}"
-            else:
-                line += f"{'-':>18s}"
-        print(line)
-
-
-if args.summary_only:
-    summarize()
-    raise SystemExit
-
-
 # ---------------------------------------------------------------- data, built once before forking
 
 splits = load_splits()
@@ -190,15 +150,10 @@ if args.families:
         print(f"{source}: {len(exported['families'])} families ({exported['source']})")
 else:
     pretrained = load_pretrain(args.pretrain)
-    families = word_families(
-        pretrained["groups"], args.polarity, args.overlap, args.min_family_size
-    )
+    families = word_families(pretrained["groups"])
     SOURCES["hwf"] = families
     SOURCES["permuted"] = permuted_families(families, pretrained["words"], np.random.default_rng(0))
-    print(
-        f"{len(pretrained['groups'])} OR groups -> {len(families)} families "
-        f"({args.polarity}, {args.overlap})"
-    )
+    print(f"{len(pretrained['groups'])} OR groups -> {len(families)} families")
 args.representations = args.representations or list(SOURCES)
 
 DATA = {}
@@ -358,4 +313,3 @@ if __name__ == "__main__":
     with mp.get_context("fork").Pool(args.workers) as pool:
         for _ in pool.imap_unordered(run, pending):
             pass
-    summarize()

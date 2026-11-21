@@ -1,4 +1,4 @@
-"""Tokenize the raw reviews and save them to data/processed.
+"""Load and tokenize the raw reviews.
 
 Loaders return rows as {"review": ..., "sentiment": ...} so tokenize_document works on any dataset.
 """
@@ -12,7 +12,6 @@ DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 RAW = DATA_DIR / "raw" / "IMDB-Dataset.csv"
 FINANCE_RAW = DATA_DIR / "raw" / "finance_news.csv"
 AMAZON_RAW = DATA_DIR / "raw" / "amazon-reviews" / "train.csv"
-PROCESSED = DATA_DIR / "processed" / "IMDB-Dataset-tokenized.csv"
 
 # Reviews contain HTML line breaks ("<br /><br />") that would otherwise become tokens.
 HTML_TAG = re.compile(r"<[^>]+>")
@@ -25,19 +24,12 @@ def tokenize(text):
     return TOKEN.findall(text)
 
 
-def tokenize_document(document, save_document=True):
+def tokenize_document(document):
     tokenized_document = []
     for row in document:
         tokenized_document.append(
             {"tokens": " ".join(tokenize(row["review"])), "sentiment": row["sentiment"]}
         )
-
-    if save_document:
-        PROCESSED.parent.mkdir(parents=True, exist_ok=True)
-        with open(PROCESSED, "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=["tokens", "sentiment"])
-            writer.writeheader()
-            writer.writerows(tokenized_document)
 
     return tokenized_document
 
@@ -72,8 +64,3 @@ def load_amazon(n, rng, path=AMAZON_RAW):
                 if j < n:
                     sample[j] = row
     return sample
-
-
-if __name__ == "__main__":
-    tokenized = tokenize_document(load_imdb(), save_document=True)
-    print(f"Tokenized {len(tokenized)} reviews -> {PROCESSED}")

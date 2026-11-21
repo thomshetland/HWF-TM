@@ -15,23 +15,14 @@ Replacing (rather than appending) puts two requirements on the families:
     (in the recipe's runs every word sits in about three groups, "book" in 64), and with
     overlapping families one word would switch on dozens of bits. overlap="partition" therefore
     assigns each word to one family; overlap="keep" leaves the groups as learned.
-
-Run directly to inspect the families of a pretraining run:
-
-  ./.venv/bin/python experiments/HWF-TM/families.py --pretrain same-dataset
 """
 
-import argparse
 import json
-import sys
 from pathlib import Path
 
 import numpy as np
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parents[1]))  # make `src` importable when run as a script
-
-RESULTS = HERE / "results"
+RESULTS = Path(__file__).resolve().parent / "results"
 
 
 def load_pretrain(name):
@@ -123,7 +114,6 @@ class FamilyEncoder:
             w for w in sorted(self.vocabulary, key=self.vocabulary.get) if w not in members
         ]
         self.columns = ["{" + "|".join(f) + "}" for f in self.families] + self.words
-        self.covered = len(members & set(self.vocabulary))
         return self
 
     @property
@@ -153,37 +143,3 @@ class FamilyEncoder:
                 for f in member_of.get(w, ()):
                     X[i, f] = 1
         return X
-
-
-if __name__ == "__main__":
-    from src.common import DATASETS, dataset_vocabulary, load_splits, tokens
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pretrain", default="same-dataset", help="results/pretrain_<name>.json")
-    parser.add_argument("--polarity", choices=("all", "positive", "negative"), default="all")
-    parser.add_argument("--overlap", choices=("partition", "keep"), default="partition")
-    parser.add_argument("--min-family-size", type=int, default=2)
-    parser.add_argument("--show", type=int, default=30, help="families to print")
-    args = parser.parse_args()
-
-    pretrained = load_pretrain(args.pretrain)
-    groups = pretrained["groups"]
-    families = word_families(groups, args.polarity, args.overlap, args.min_family_size)
-    sizes = [len(f) for f in families]
-    print(
-        f"{len(groups)} OR groups -> {len(families)} families ({args.polarity}, {args.overlap}), "
-        f"{sum(sizes)} member words, size mean {np.mean(sizes):.1f}, max {max(sizes)}"
-    )
-    for family in families[: args.show]:
-        print("  " + " | ".join(family))
-
-    splits = load_splits()
-    print("\nInput width per dataset (baseline: 5000 word bits):")
-    for name in DATASETS:
-        train = [tokens(r) for r in splits[name]["train"]]
-        encoder = FamilyEncoder(families, dataset_vocabulary(splits[name]["train"])).fit(train)
-        width = encoder.n_families + len(encoder.words)
-        print(
-            f"  {name:8s} {encoder.n_families:4d} family bits replace {encoder.covered:4d} "
-            f"word bits -> {width} bits"
-        )

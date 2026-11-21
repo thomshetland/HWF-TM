@@ -209,18 +209,6 @@ def extract_groups(tm):
 
 groups = extract_groups(tm)
 empty_per_group = float(np.mean([g["empty_leaves"] for g in groups]))
-leaves = [leaf for g in groups for leaf in g["leaves"]]
-print(
-    f"\n{len(groups)} OR groups, {empty_per_group:.2f} empty alternatives per group, "
-    f"{np.mean([len(leaf) for leaf in leaves]):.2f} words per leaf, "
-    f"{np.mean([len(leaf) == 1 for leaf in leaves]):.0%} single-word leaves"
-)
-print("\nExamples from positive clauses (evidence for 'belong together'):")
-for g in [g for g in groups if g["polarity"] > 0 and len(g["leaves"]) > 1][:15]:
-    print(
-        f"  [{g['clause']:3d}/{g['span']}] " + " | ".join(" & ".join(leaf) for leaf in g["leaves"])
-    )
-
 RESULTS.mkdir(parents=True, exist_ok=True)
 out = RESULTS / f"pretrain_{args.name}.json"
 with out.open("w") as fh:

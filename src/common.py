@@ -51,17 +51,15 @@ def load_splits():
     splits = {}
     for name, load in (("imdb", load_imdb), ("finance", load_finance)):
         rng = np.random.default_rng(DATA_SEED)
-        rows = tokenize_document(load(), save_document=False)
+        rows = tokenize_document(load())
         rows = [rows[i] for i in rng.permutation(len(rows))]
         n_test = int(len(rows) * TEST_FRACTION)
         splits[name] = {"test": rows[:n_test], "train": rows[n_test:]}
 
     rng = np.random.default_rng(DATA_SEED)
     splits["amazon"] = {
-        "train": tokenize_document(load_amazon(40000, rng), save_document=False),
-        "test": tokenize_document(
-            load_amazon(10000, rng, AMAZON_RAW.with_name("test.csv")), save_document=False
-        ),
+        "train": tokenize_document(load_amazon(40000, rng)),
+        "test": tokenize_document(load_amazon(10000, rng, AMAZON_RAW.with_name("test.csv"))),
     }
 
     SPLITS_PATH.parent.mkdir(parents=True, exist_ok=True)

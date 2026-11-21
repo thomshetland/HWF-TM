@@ -33,7 +33,7 @@ CLASSES = ["negative", "positive"]
 rng = np.random.default_rng(SEED)
 
 print("Loading and tokenizing...")
-reviews = tokenize_document(load_imdb(), save_document=False)
+reviews = tokenize_document(load_imdb())
 reviews = [reviews[i] for i in rng.permutation(len(reviews))]
 
 n_test = int(len(reviews) * TEST_FRACTION)

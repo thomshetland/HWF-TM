@@ -34,8 +34,8 @@ rng = np.random.default_rng(SEED)
 # tokenize documents
 
 print("Tokenizing...")
-imdb = tokenize_document(load_imdb(), save_document=False)
-finance = tokenize_document(load_finance(), save_document=False)
+imdb = tokenize_document(load_imdb())
+finance = tokenize_document(load_finance())
 
 # IMDB has 10x more reviews than finance news. Use equally many from each so the
 # vocabulary is not dominated by movie words.

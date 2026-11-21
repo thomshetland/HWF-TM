@@ -45,9 +45,6 @@ def write(name, source, families, ranked_words):
             {"name": name, "source": source, "families": families, "ranked_words": ranked_words},
             fh,
         )
-    sizes = [len(f) for f in families]
-    print(f"{name:13s} {len(families):4d} families, {len(members):5d} words, max size {max(sizes)}")
-    print("              e.g. " + "   ".join(" | ".join(f) for f in families[:3]))
 
 
 same_dataset = load_pretrain("same-dataset")

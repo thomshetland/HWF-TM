@@ -33,10 +33,8 @@ rng = np.random.default_rng(SEED)
 
 print("Loading and tokenizing...")
 # Amazon ships its own train/test split, so a random sample of each is used.
-train = tokenize_document(load_amazon(TRAIN_REVIEWS, rng), save_document=False)
-test = tokenize_document(
-    load_amazon(TEST_REVIEWS, rng, AMAZON_RAW.with_name("test.csv")), save_document=False
-)
+train = tokenize_document(load_amazon(TRAIN_REVIEWS, rng))
+test = tokenize_document(load_amazon(TEST_REVIEWS, rng, AMAZON_RAW.with_name("test.csv")))
 
 # The vocabulary is fitted on training reviews only.
 vocabulary = build_vocabulary([train], VOCABULARY_SIZE)

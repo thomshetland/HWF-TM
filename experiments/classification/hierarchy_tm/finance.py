@@ -33,7 +33,7 @@ CLASSES = ["negative", "neutral", "positive"]
 rng = np.random.default_rng(SEED)
 
 print("Loading and tokenizing...")
-sentences = tokenize_document(load_finance(), save_document=False)
+sentences = tokenize_document(load_finance())
 sentences = [sentences[i] for i in rng.permutation(len(sentences))]
 
 n_test = int(len(sentences) * TEST_FRACTION)

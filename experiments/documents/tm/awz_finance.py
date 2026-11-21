@@ -34,10 +34,10 @@ rng = np.random.default_rng(SEED)
 # tokenize documents
 
 print("Loading and tokenizing...")
-finance = tokenize_document(load_finance(), save_document=False)
+finance = tokenize_document(load_finance())
 # Amazon has 3.6M reviews, so a random sample the size of finance news is used; the two
 # datasets are then equally large and neither dominates the vocabulary.
-amazon = tokenize_document(load_amazon(len(finance), rng), save_document=False)
+amazon = tokenize_document(load_amazon(len(finance), rng))
 
 # Shuffle, then split texts into train/test BEFORE pairing, so no text appears in both.
 amazon = [amazon[i] for i in rng.permutation(len(amazon))]

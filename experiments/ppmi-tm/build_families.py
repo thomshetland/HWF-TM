@@ -87,8 +87,6 @@ print(
     f"  {len(families)} families of 2-40 words, {sum(map(len, families))} words covered, "
     f"{np.mean([len(f) for f in families]):.1f} per family"
 )
-for f in [f for f in families if any(words[w] in ("great", "terrible", "profit") for w in f)]:
-    print("   ", " | ".join(words[w] for w in f[:12]))
 
 RESULTS.mkdir(parents=True, exist_ok=True)
 out = RESULTS / f"{args.name}.json"
